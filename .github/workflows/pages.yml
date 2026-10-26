@@ -33,7 +33,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: Check out content
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           path: content
           # Deploy uses the github-pages environment token, not this checkout's
@@ -41,7 +41,7 @@ jobs:
           persist-credentials: false
 
       - name: Check out journal-maker
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: org-ai-assisted/journal-maker
           path: journal-maker
