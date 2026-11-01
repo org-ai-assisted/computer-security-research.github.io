@@ -118,12 +118,26 @@ infrastructure, coercion of an operator, or a malicious insider -\/-
 targeted malicious installations or updates may be difficult to detect,
 independently verify, or prove to a third party.
 
-The same constraints bear on ordinary malware investigation. When a
-device is suspected of infection, the owner typically cannot perform a
-thorough inspection from a separate, known-clean computer without first
-unlocking or modifying the device. That modification can alter the
-evidence under examination, and a well-constructed backdoor could detect
-the onset of an investigation and erase itself or conceal its traces.
+The same constraints bear on malware investigation, though their force
+depends on the class of malware. Commodity, application-level threats
+can often be detected on the device itself, by consumer antivirus or
+Google\textquotesingle s Play Protect, without unlocking or modifying it
+-\/- a point Section 12 takes up in full. The limitation bites for the
+targeted, low-level compromise: a kernel-space rootkit or
+sub-operating-system implant masks its own presence and sits beneath any
+in-system scanner, which it can evade whatever that
+scanner\textquotesingle s privileges (Section 9). Against that class the
+owner typically cannot carry out the standard forensic approach -\/-
+examining the device from a separate, known-clean computer and working
+from an image rather than the live original, as standard forensic
+practice directs \citep{nist-sp800-86} -\/- without first unlocking or
+modifying the device. That modification can itself alter the evidence
+under examination, the mandatory wipe triggered by unlocking the
+bootloader being the extreme case \citep{aosp-bootloader-locking}; and a
+well-constructed backdoor could detect the onset of an investigation and
+erase itself or conceal its traces \citep{chen-anti-virtualization},
+\citep{ruggia-evasive-malware}, \citep{garfinkel-anti-forensics}, as
+Section 13 develops.
 
 This paper treats these properties not as implementation accidents but
 as consequences of a design in which administrative capability is
@@ -190,8 +204,8 @@ private data directory that other applications cannot read
 SELinux, confines even privileged system processes to narrowly defined
 domains, so that a compromise of one component does not automatically
 yield access to the whole system \citep{aosp-selinux}. File-based
-encryption, mandatory since Android 10, protects data at rest, with the
-principal encryption key bound to dedicated hardware
+encryption, mandatory since Android 10, protects user data at rest, with
+the principal encryption key bound to dedicated hardware
 \citep{aosp-file-based-encryption}.
 
 These mechanisms are effective at their stated purpose: constraining
