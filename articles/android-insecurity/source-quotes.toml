@@ -617,6 +617,16 @@ quotes = [
   { text = "\"The phone IMEI, hardware serial number, SIM serial number and IMSI, handset phone number etc are shared with Apple and Google.\"" },
 ]
 
+[liu-android-oem-snooping]
+label = "Liu/Patras/Leith -- GMS Play Services telemetry to Google has no opt-out, confirmed by Google"
+claims = [
+  { section = "Sec. 6", text = "On GMS-certified handsets Google Play services and the Play store transmit a considerable volume of data to Google even when idle and with privacy settings enabled; Google confirmed there is no opt-out." },
+]
+quotes = [
+  { text = "On all of the other handsets the Google Play Services and Google Play store system apps send a considerable volume of data to Google, the content of which is unclear, not publicly documented and Google confirm there is no opt out from this data collection.", label = "Google-confirmed no opt-out", note = "Liu, Patras, Leith, Android OEM snooping technical report, Oct 2021; verified verbatim." },
+  { text = "As already noted, this data collection occurs even though privacy settings are enabled. Handset users therefore have no easy opt out from this data collection.", label = "Occurs at idle with privacy settings enabled" },
+]
+
 [google-device-config-service]
 label = "Device Configuration Service -- device sends data to Google"
 claims = [
