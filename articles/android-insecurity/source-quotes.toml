@@ -138,6 +138,25 @@ quotes = [
   { text = "This is a generic guide on setting up the attestation server.", label = "Self-hostable", note = "AttestationServer README; the server is Open Source (MIT-licensed), so an owner can run their own instance instead of the public attestation.app service." },
 ]
 
+[google-play-protect]
+label = "Google Play Protect -- the built-in app scanner"
+quotes = [
+  { text = "Google Play Protect automatically scans all of the apps on Android phones and works to prevent the installation of harmful apps, making it the most widely deployed mobile threat protection service in the world.", label = "Ubiquity", note = "Google Play Protect developer documentation." },
+  { text = "Google Play Protect scans 200 billion Android apps daily to make sure that everything remains spot on.", label = "Scale" },
+]
+
+[avast-mobile-faq]
+label = "Avast Mobile Security -- bounded by the OS it runs inside"
+quotes = [
+  { text = "Like all applications on the Android market, it is subject to limitations imposed by the operating system version running on the device. It cannot protect against exploits targeting specific vulnerabilities in the OS kernel, the network stack and other fundamental parts of the system.", label = "Cannot reach the kernel", note = "Avast Mobile Security FAQ (vendor's own statement)." },
+]
+
+[kaspersky-android]
+label = "Kaspersky for Android -- scans within the OS as an app"
+quotes = [
+  { text = "The Kaspersky app scans the device's entire file system.", label = "Full-scan scope", note = "Kaspersky for Android online help, About page." },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
