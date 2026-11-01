@@ -1084,18 +1084,24 @@ On a stock Android device these same capabilities are, in general,
 absent. The operating system cannot be freely replaced, so restoring a
 known-good system is usually unsupported or impractical. Booting an
 external, fully trusted operating system that bypasses the installed
-system is not supported. Full disk and memory access -\/- raw disk
-imaging, comprehensive file inspection, and live RAM capture -\/- is
-blocked without special privileges. Gaining those privileges usually
-breaks verified boot and attestation, causing the device to be treated
-as untrusted; can disable or degrade security features that depend on
-the device remaining locked down and unmodified; and can cause many
-applications, including banking, enterprise, and content-protected
-applications, to refuse to run. The net effect is that the tools needed
-to verify the system require breaking those same guarantees before they
-can be applied -\/- and, as Section 8 showed, the privileges so gained
-are themselves bounded and do not amount to the external trusted vantage
-point that verification needs.
+system is not supported on the device as sold: while the bootloader is
+locked it requires a valid signature before it will boot or install any
+image, so an external, unsigned system cannot be started without first
+unlocking it \citep{aosp-fastboot-protocol}. Even on an unlocked device
+there is no universal external-boot path -\/- starting an external image
+is vendor- and device-specific, unofficial, and cumbersome even where it
+works at all \citep{bootloader-wall-of-shame}. Full disk and memory
+access -\/- raw disk imaging, comprehensive file inspection, and live
+RAM capture -\/- is blocked without special privileges. Gaining those
+privileges usually breaks verified boot and attestation, causing the
+device to be treated as untrusted; can disable or degrade security
+features that depend on the device remaining locked down and unmodified;
+and can cause many applications, including banking, enterprise, and
+content-protected applications, to refuse to run. The net effect is that
+the tools needed to verify the system require breaking those same
+guarantees before they can be applied -\/- and, as Section 8 showed, the
+privileges so gained are themselves bounded and do not amount to the
+external trusted vantage point that verification needs.
 
 Table 3 compares specific analysis capabilities. The values "Yes" and
 "No" indicate that a capability is, respectively, generally available or
@@ -1671,7 +1677,10 @@ In-system superuser (root) & Available to the owner by default &
 Withheld as sold; reachable only by exploit or unlocking, and then
 bounded by SELinux and kernel lockdown \\
 Boot an external trusted system & Yes, from external media & Not
-supported \\
+supported while locked: the bootloader boots only signed images and an
+external system requires first unlocking \citep{aosp-fastboot-protocol},
+\citep{aosp-bootloader-locking}; the path is then device-specific and
+unofficial \\
 Remove and image storage & Yes: detach the storage and image it on a
 trusted controller & Storage is soldered; chip-level reading is
 destructive, and the data returns as ciphertext under a hardware-bound
