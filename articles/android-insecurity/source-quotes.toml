@@ -109,7 +109,7 @@ quotes = [
 [grapheneos-attestation-compat]
 label = "GrapheneOS -- apps ban it; strong tier == hardware key attestation"
 claims = [
-  { section = "Sec. 8, 12", text = "owner-controlled configs fail device/strong verdicts; a catalog of apps refuse to run. (The no-spoofing stance is GrapheneOS-specific -- see [grapheneos-usage]; it does not hold for all aftermarket projects, since CalyxOS and /e/OS ship microG, which signature-spoofs.)" },
+  { section = "Sec. 8", text = "owner-controlled configs fail device/strong verdicts; a catalog of apps refuse to run. (The no-spoofing stance is GrapheneOS-specific -- see [grapheneos-usage]; it does not hold for all aftermarket projects, since CalyxOS and /e/OS ship microG, which signature-spoofs.)" },
 ]
 quotes = [
   { text = "\"Play Integrity API strong integrity level is directly based on the hardware key attestation API, but apps using it directly can support aftermarket operating systems...\" / \"This is a list of the apps banning GrapheneOS with the Play Integrity API...\"" },
@@ -128,9 +128,11 @@ quotes = [
 label = "GrapheneOS Auditor -- hardware-backed remote attestation from a second device"
 claims = [
   { section = "Sec. 12", text = "GrapheneOS provides hardware-backed remote attestation an owner can verify from a second device." },
+  { section = "Sec. 12", text = "The released Auditor recognizes only verified-boot keys compiled into it; for a self-signed (alternate-OS) state these are the official GrapheneOS keys, so an owner's self-generated verified-boot key is not recognized, and an owner-signed build needs an owner-configured Auditor and Attestation Server." },
 ]
 quotes = [
   { text = "\"The Auditor app uses hardware-based security features to validate the identity of a device, along with the authenticity and integrity of the operating system. It ensures the device is running a verified operating system with a locked bootloader and that no tampering has occurred.\" / \"Any device with Android 13 or higher can run the Auditor app and use it to verify other devices. However, only devices launched with Android 8.0 or later have the necessary hardware support for being verified.\"" },
+  { text = "Alternative operating systems need their verified boot key included in the Auditor app and Attestation Server.", label = "Released app recognizes only compiled-in keys", note = "attestation.app/about; corroborated in Auditor source AttestationProtocol.java -- the self-signed branch pins only official GrapheneOS keys and rejects any unpinned verified-boot key." },
 ]
 
 [grapheneos-attestation-server]
