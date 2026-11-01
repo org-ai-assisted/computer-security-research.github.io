@@ -219,6 +219,16 @@ quotes = [
   { text = "LUKS (multiple user keys with one volume key, anti-forensic features, metadata block at start of device, ...)", label = "One volume key, multiple user keys", note = "cryptsetup project FAQ, on LUKS vs plain dm-crypt." },
 ]
 
+[nist-sp800-86]
+label = "NIST SP 800-86 -- examine a copy on a forensic workstation, not the original"
+claims = [
+  { section = "Sec. 1", text = "Standard forensic practice is to examine the device from a separate trusted system and work from a copy, not the live original." },
+]
+quotes = [
+  { text = "Analysts should examine copies of files, not the original files.", label = "Examine copies, not originals", note = "NIST SP 800-86, Guide to Integrating Forensic Techniques into Incident Response." },
+  { text = "The analyst can then use the working copy without affecting the original files or the master copy.", label = "Work from a copy" },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
@@ -265,12 +275,14 @@ quotes = [
 ]
 
 [aosp-bootloader-locking]
-label = "Bootloader unlock -- mandatory factory data reset"
+label = "Bootloader locking -- locked refuses a foreign image; unlocking wipes user data"
 claims = [
+  { section = "Sec. 2", text = "A locked bootloader prevents installing/booting a non-vendor system or boot image." },
   { section = "Sec. 3, 13", text = "unlocking the bootloader triggers a mandatory wipe of user data." },
 ]
 quotes = [
-  { text = "After the user acknowledges the warning, the device should perform a factory data reset to prevent unauthorized data access.", note = "Page body loads via JS; retrieved with a headless chromium render, not a raw fetch." },
+  { text = "Devices intended for retail should be shipped in the locked state ... to ensure that attackers can't compromise the device by installing a new system or boot image.", label = "Locked: no foreign image", note = "Android Open Source Project, Locking and unlocking the bootloader; ellipsis elides a get_unlock_ability parenthetical." },
+  { text = "After the user acknowledges the warning, the device should perform a factory data reset to prevent unauthorized data access.", label = "Unlock wipes data", note = "Page body loads via JS; retrieved with a headless chromium render, not a raw fetch." },
 ]
 
 [rowlingson-forensic-readiness]
