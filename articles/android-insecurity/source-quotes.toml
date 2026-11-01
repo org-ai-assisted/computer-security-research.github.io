@@ -1180,6 +1180,36 @@ quotes = [
   { text = "On several phone models, this program runs with sufficient rights to access and modify the user's personal data.", label = "Scoped to several models" },
 ]
 
+[eu-computer-programs-directive]
+label = "EU Computer Programs Directive -- Art. 6 permits decompilation for interoperability"
+claims = [
+  { section = "Sec. 12", text = "EU law permits reproduction/translation of program code where indispensable to achieve interoperability of an independently created program; the Replicant finders invoked this (Art. 6 of the 1991 directive, codified as 2009/24/EC) as the legal basis for their modem-binary reverse engineering." },
+]
+quotes = [
+  { text = "The authorisation of the rightholder shall not be required where reproduction of the code and translation of its form within the meaning of points (a) and (b) of Article 4(1) are indispensable to obtain the information necessary to achieve the interoperability of an independently created computer program with other programs", label = "Art. 6(1) -- decompilation for interoperability", note = "Directive 2009/24/EC (codified; same right as Art. 6 of the 1991 directive 91/250/EEC the Replicant disclaimer names). Verified verbatim via rendered EUR-Lex; UK spelling preserved." },
+]
+
+[dmca-1201-exemptions-2024]
+label = "DMCA 1201 -- triennial good-faith-security-research and consumer-device-repair exemptions"
+claims = [
+  { section = "Sec. 12", text = "In the US, circumvention of access controls is prohibited by 17 USC 1201; comparable reverse-engineering and repair work depends on periodic, narrowly drawn triennial exemptions for good-faith security research and for consumer-device repair, codified at 37 CFR 201.40." },
+]
+quotes = [
+  { text = "good-faith security research means accessing a computer program solely for purposes of good-faith testing, investigation, and/or correction of a security flaw or vulnerability", label = "Security-research exemption, 37 CFR 201.40(b)(18)", note = "US Copyright Office final rule, 89 Fed. Reg. 85437 (Oct. 28, 2024); verified verbatim via the govinfo PDF." },
+  { text = "devices designed primarily for use by consumers, when circumvention is a necessary step to allow the diagnosis, maintenance, or repair of such a device, and is not accomplished for the purpose of gaining access to other copyrighted works", label = "Consumer-device repair exemption" },
+]
+
+[replicant-samsung-backdoor-wiki]
+label = "Replicant wiki -- RE of proprietary modem binary + legal disclaimer (EU art. 6 interoperability defense)"
+claims = [
+  { section = "Sec. 12", text = "The Samsung modem backdoor was found by reverse-engineering the proprietary modem binary; the finders published a legal disclaimer resting the lawfulness of their decompilation on the EU Computer Programs Directive's interoperability exception." },
+]
+quotes = [
+  { text = "The developers involved in the present analysis did not ever agree to any sort of End User License Agreement that explicitly prohibited the reverse engineering and decompiling operations of the incriminated binary.", label = "No EULA barred the RE", note = "Replicant wiki, Samsung Galaxy Back-door. Live redmine page is bot-gated (Anubis); text verified verbatim against the Internet Archive Wayback snapshot (2014)." },
+  { text = "Hence, we believe these operations were conducted for the sole purpose of interoperability and not with the intent of creating a competing product.", label = "Interoperability purpose" },
+  { text = "As the involved developers were based in Europe, we believe the legality of these operations is granted by article 6 of the 1991 EU Computer Programs Directive.", label = "EU art. 6 interoperability defense" },
+]
+
 [li-basemirror]
 label = "Li et al., CCS 2024 -- baseband is a separate processor exposing undisclosed commands; vendor-confirmed zero-days reach the AP file system on current hardware"
 claims = [
