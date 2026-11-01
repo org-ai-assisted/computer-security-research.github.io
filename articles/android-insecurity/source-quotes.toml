@@ -132,10 +132,10 @@ quotes = [
 [grapheneos-attestation-server]
 label = "Owner can self-host the attestation server"
 claims = [
-  { section = "Sec. 12", text = "The attestation server is open source, so an owner can run their own instance for remote verification rather than rely on the public service." },
+  { section = "Sec. 12", text = "The attestation server is Open Source, so an owner can run their own instance for remote verification rather than rely on the public service." },
 ]
 quotes = [
-  { text = "This is a generic guide on setting up the attestation server.", label = "Self-hostable", note = "AttestationServer README; the server is open source (MIT-licensed), so an owner can run their own instance instead of the public attestation.app service." },
+  { text = "This is a generic guide on setting up the attestation server.", label = "Self-hostable", note = "AttestationServer README; the server is Open Source (MIT-licensed), so an owner can run their own instance instead of the public attestation.app service." },
 ]
 
 [grapheneos-usage]
