@@ -359,6 +359,7 @@ claims = [
 ]
 quotes = [
   { text = "\"In Amnesty International's experience there are significantly more forensic traces accessible to investigators on Apple iOS devices than on stock Android devices, therefore our methodology is focused on the former. As a result, most recent cases of confirmed Pegasus infections have involved iPhones.\"" },
+  { text = "It is important to note that this does not necessarily reflect the relative security of iOS devices compared to Android devices, or other operating systems and phone manufacturers.", label = "iOS focus does not imply iOS is more secure" },
 ]
 
 [mvt-android-methodology]
