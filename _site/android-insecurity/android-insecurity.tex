@@ -849,12 +849,13 @@ or obtained root typically cannot satisfy the device-integrity or strong
 verdicts, because those are tied to a Google-certified, vendor-signed
 configuration \citep{play-integrity-improvements},
 \citep{owasp-mastg-play-integrity}. A growing number of applications
--\/- banking and payment applications, some enterprise and government
-applications, and content-protection components among them -\/- gate
-access on at least the hardware-backed device-integrity verdict, some
-additionally demanding the strong tier, and refuse to run, or silently
-degrade, on a device that cannot present them
-\citep{owasp-mastg-play-integrity}.
+-\/- banking and payment applications and content-protection components
+among them -\/- gate access on at least the hardware-backed
+device-integrity verdict, some additionally demanding the strong tier,
+and refuse to run, or silently degrade, on a device that cannot present
+them \citep{owasp-mastg-play-integrity},
+\citep{play-integrity-verdicts}, \citep{aosp-drm},
+\citep{privsecdev-banking-grapheneos}.
 
 The exact proportion of applications that do so is disputed and not
 rigorously measured, but the available evidence points firmly toward
