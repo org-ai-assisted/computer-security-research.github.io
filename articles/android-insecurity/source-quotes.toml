@@ -176,6 +176,30 @@ quotes = [
   { text = "Root processes are the most frequent target of privilege escalation attacks, so reducing the number of root processes reduces risk of privilege escalation.", label = "Reduce root processes", note = "Android Open Source Project, Implement security (Isolate root processes)." },
 ]
 
+[tag-buying-spying]
+label = "Google TAG -- commercial spyware drives Android 0-day exploitation"
+quotes = [
+  { text = "CSVs are behind half of known 0-day exploits targeting Google products as well as Android ecosystem devices.", label = "Half of Android 0-days", note = "Google Threat Analysis Group, Buying Spying (2024). CSV = commercial surveillance vendor." },
+]
+
+[tag-cytrox]
+label = "Google TAG -- full exploit chain against an up-to-date device"
+quotes = [
+  { text = "In October 2021, we detected a full chain exploit from an up-to-date Samsung phone running the latest version of Chrome.", label = "Up-to-date device compromised at runtime", note = "Google Threat Analysis Group, Protecting Android users from 0-Day attacks (2022)." },
+]
+
+[projectzero-itw]
+label = "Project Zero -- in-the-wild 0-day tracker (the list)"
+quotes = [
+  { text = "our tracking spreadsheet for publicly known cases of detected zero-day exploits, in the hope that this can be a useful community resource", label = "The in-the-wild record", note = "Google Project Zero, 0day In the Wild." },
+]
+
+[talos-predator]
+label = "Cisco Talos -- Predator defeats in-OS confinement at runtime"
+quotes = [
+  { text = "ALIEN is injected into the zygote address space to pivot into specialized privileged processes inside the Android permission model. Since zygote is the parent process of most of the Android processes, it can change to most UIDs and transition into other SELinux contexts that possess different privileges.", label = "zygote injection, SELinux transition", note = "Cisco Talos, technical analysis of Intellexa's PREDATOR (2023)." },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
