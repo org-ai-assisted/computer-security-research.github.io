@@ -882,7 +882,7 @@ quotes = [{ text = "You can add a Google Account on your device to start downloa
 quotes = [{ text = "One method used to protect platforms against such attacks is to physically fuse off the JTAG Test Access Ports, either at the integrated circuit or the board level.", label = "Abstract", note = "Abstract retrieved from OpenAlex + Semantic Scholar mirrors; IEEE Xplore hard-blocks automated fetch." }]
 
 [breeuwsma-jtag-imaging]
-no_quote = "Breeuwsma, Digital Investigation 2006 -- Elsevier paywalled; no open abstract."
+quotes = [{ text = "The method described in this paper uses a JTAG test access port to access memory chips directly. By accessing memory chips directly, the risk of changing data in the exhibit is minimized. Also user level passwords can be omitted.", label = "Abstract", note = "Abstract retrieved from the ScienceDirect article page; the Elsevier full text is paywalled." }]
 
 [yang-live-memory-acquisition]
 quotes = [{ text = "Existing Android main memory forensics techniques are hardly being adopted in practical forensic investigations because they often require solving several usability constraints, such as requiring root privilege escalation, custom kernel replacement, or screen lock bypass.", label = "Abstract" }]
