@@ -304,6 +304,18 @@ quotes = [
   { text = "on some phones, dialer keypresses and SMS text are being written to system logs by layer 4 code.", label = "Keypresses/SMS to logs", note = "EFF Deeplinks, Dec 2011; NGO technical analysis -- covert diagnostic logging, not a full-content exfiltration channel." },
 ]
 
+[aosp-drm]
+label = "Android DRM framework -- hardware-backed content protection bound to the boot chain of trust"
+claims = [
+  { section = "Sec. 2", text = "Hardware-backed digital-rights-management binds decryption and the decoded video frames to the same hardware chain of trust as verified boot, releasing premium content through a trusted output path on the content provider's terms while withholding the decoded stream from the device owner -- the content-protection objective the paper names and places out of scope." },
+]
+quotes = [
+  { text = "The Android platform provides an extensible DRM framework that lets apps manage rights-protected content according to the license constraints associated with the content.", label = "Rights-protected content on the provider's terms", note = "Android Open Source Project, DRM (Framework section); verified verbatim against the live page." },
+  { text = "The DRM plugin is integrated with the Android DRM framework and can use hardware-backed protection to secure premium content and user credentials.", label = "Hardware-backed protection of premium content" },
+  { text = "The hardware capabilities of the device should include hardware secure boot to establish a chain of trust of security and protection of cryptographic keys.", label = "Anchored to the same hardware chain of trust as verified boot" },
+  { text = "Content protection capabilities of the device should include protection of decrypted frames in the device and content protection through a trusted output protection mechanism.", label = "Decoded frames protected from the owner via a trusted output path" },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
