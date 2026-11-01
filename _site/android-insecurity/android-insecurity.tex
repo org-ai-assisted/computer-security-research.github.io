@@ -681,11 +681,27 @@ malicious code shipped inside the certified image as pre-installed
 vendor software, as the Triada family was built into
 manufacturers\textquotesingle{} system images during production
 \citep{google-triada}, or a runtime, memory-resident compromise of the
-already-booted and legitimately signed kernel. A persistent rootkit that
-instead rewrites the verified boot or system partitions is the one case
-verified boot and dm-verity are built to catch
-\citep{aosp-verified-boot}; Section 12 returns to the deeper breaches
-that can defeat even that.
+already-booted and legitimately signed kernel.
+
+These runtime compromises are documented, not hypothetical: commercial
+surveillance vendors sell turnkey exploit chains that defeat current,
+fully patched devices, and Google\textquotesingle s Threat Analysis
+Group attributes about half of known zero-day exploits against Google
+and Android targets to such vendors \citep{tag-buying-spying}, in one
+case observing a full chain fired against an up-to-date Samsung phone
+running the latest Chrome \citep{tag-cytrox}; Project Zero maintains the
+running in-the-wild record \citep{projectzero-itw}. Once resident, such
+an implant operates inside the running system\textquotesingle s own
+trust boundaries -\/- the Predator spyware\textquotesingle s loader
+injects into zygote to assume other application identities and move
+between SELinux domains \citep{talos-predator} -\/- so the application
+sandbox and SELinux confinement of Section 2 restrain it far less than
+they restrain ordinary software.
+
+A persistent rootkit that instead rewrites the verified boot or system
+partitions is the one case verified boot and dm-verity are built to
+catch \citep{aosp-verified-boot}; Section 12 returns to the deeper
+breaches that can defeat even that.
 
 This arrangement produces a circular trust dependency, summarized in
 Table 2. To inspect the system deeply, the owner must modify the device
