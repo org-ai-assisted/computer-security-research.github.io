@@ -174,7 +174,7 @@ quotes = [
 [aosp-root-process-isolation]
 label = "Android policy -- minimize root (uid-0) processes"
 claims = [
-  { section = "Sec. 2", text = "Android deliberately reduces the number of root processes to cut privilege-escalation risk." },
+  { section = "Sec. 3", text = "Android deliberately reduces the number of root processes to cut privilege-escalation risk." },
 ]
 quotes = [
   { text = "Root processes are the most frequent target of privilege escalation attacks, so reducing the number of root processes reduces risk of privilege escalation.", label = "Reduce root processes", note = "Android Open Source Project, Implement security (Isolate root processes)." },
@@ -292,6 +292,15 @@ claims = [
 ]
 quotes = [
   { text = "Even if users decide to stop or delete some of these apps, they will not be able to do so since many of them are core Android services and others cannot be permanently removed by the user without root privileges.", label = "Cannot remove without root", note = "Gamba et al., An Analysis of Pre-installed Android Software, IEEE Symposium on Security and Privacy 2020." },
+]
+
+[eckersley-carrieriq]
+label = "Eckersley/EFF -- Carrier IQ wrote keypresses/SMS to system logs"
+claims = [
+  { section = "Sec. 2", text = "Carrier IQ, preinstalled carrier diagnostic software, wrote dialer keypresses and SMS text to system logs on some devices." },
+]
+quotes = [
+  { text = "on some phones, dialer keypresses and SMS text are being written to system logs by layer 4 code.", label = "Keypresses/SMS to logs", note = "EFF Deeplinks, Dec 2011; NGO technical analysis -- covert diagnostic logging, not a full-content exfiltration channel." },
 ]
 
 [grapheneos-usage]
