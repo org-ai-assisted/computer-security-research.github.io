@@ -249,19 +249,19 @@ and a locked bootloader admit only vendor-signed code to the boot and
 system partitions, keeping unauthorized code out of the system image
 though not out of the application layer \citep{aosp-verified-boot},
 \citep{aosp-bootloader-locking} (a chain that has itself demonstrated
-sub-operating-system defeats; Sections 8 and 12); Google Play Protect
+sub-operating-system defeats; Sections 2 and 12); Google Play Protect
 screens apps and works to prevent the installation of harmful ones, with
 installation from unknown sources restricted by default
 \citep{google-play-protect}, \citep{nistSP800124r2}; and the Play
 Integrity API gates relying-party access when a device appears tampered
 \citep{play-integrity-verdicts}. How well the app-layer screen actually
 catches malware is settled by independent testing rather than by vendor
-claim: in the most recent such measurement Play Protect reached a 99.3
-percent protection rate, clearing the 99 percent certification threshold
-but trailing the leading third-party scanners at 99.9 percent and
-logging more false positives, an improvement over earlier independent
-rounds that had rated it dead last at well below 70 percent detection
-\citep{avcomparatives-mobile-2024},
+claim: in AV-Comparatives\textquotesingle{} May 2024 testing Play
+Protect reached a 99.3 percent protection rate, clearing the 99 percent
+certification threshold that round but trailing the leading third-party
+scanners at 99.9 percent and logging more false positives, an
+improvement over earlier independent rounds that had rated it dead last
+at well below 70 percent detection \citep{avcomparatives-mobile-2024},
 \citep{avtest-android-endurance-2018}. But the signed-image and
 attestation machinery also enforces objectives the owner may neither
 share nor be able to remove or audit -\/- that only a vendor-approved
@@ -624,8 +624,9 @@ update is delivered through Google or through the device vendor varies
 by manufacturer. The AOSP security policy itself grants Google Play
 services access to the system-update service and to the A/B update
 engine, confirming its privileged role in the update path on such
-devices \citep{aosp-sepolicy-gmscore}. This Google Play services channel
-is not one the user can disable: an independent measurement study of
+devices \citep{aosp-sepolicy-gmscore}. The data Google Play services
+sends to Google in this way is not something the user can opt out of
+while the service is in use: an independent measurement study of
 GMS-certified handsets found that Google Play services and the Play
 store transmit a considerable volume of data to Google even when the
 device is idle and privacy settings are enabled, and reports that Google
@@ -798,19 +799,19 @@ device compromise \citep{projectzero-badbinder}.
 
 These runtime compromises are documented, not hypothetical: commercial
 surveillance vendors sell turnkey exploit chains that defeat current,
-fully patched devices, and Google\textquotesingle s Threat Analysis
-Group attributes about half of known zero-day exploits against Google
-and Android targets to such vendors \citep{tag-buying-spying}, in one
-case observing a full chain fired against an up-to-date Samsung phone
-running the latest Chrome \citep{tag-cytrox},
-\citep{citizenlab-forcedentry}; Project Zero maintains the running
-in-the-wild record \citep{projectzero-itw}. Once resident, such an
-implant operates inside the running system\textquotesingle s own trust
-boundaries -\/- the Predator spyware\textquotesingle s loader injects
-into zygote to assume other application identities and move between
-SELinux domains \citep{talos-predator} -\/- so the application sandbox
-and SELinux confinement of Section 2 restrain it far less than they
-restrain ordinary software.
+fully patched devices \citep{citizenlab-forcedentry}, and
+Google\textquotesingle s Threat Analysis Group attributes about half of
+known zero-day exploits against Google and Android targets to such
+vendors \citep{tag-buying-spying}, in one case observing a full chain
+fired against an up-to-date Samsung phone running the latest Chrome
+\citep{tag-cytrox}; Project Zero maintains the running in-the-wild
+record \citep{projectzero-itw}. Once resident, such an implant operates
+inside the running system\textquotesingle s own trust boundaries -\/-
+the Predator spyware\textquotesingle s loader injects into zygote to
+assume other application identities and move between SELinux domains
+\citep{talos-predator} -\/- so the application sandbox and SELinux
+confinement of Section 2 restrain it far less than they restrain
+ordinary software.
 
 A persistent rootkit that instead rewrites the verified boot or system
 partitions is the one case verified boot and dm-verity are built to
@@ -1111,21 +1112,22 @@ external, fully trusted operating system that bypasses the installed
 system is not supported on the device as sold: while the bootloader is
 locked it requires a valid signature before it will boot or install any
 image, so an external, unsigned system cannot be started without first
-unlocking it \citep{aosp-fastboot-protocol}. Even on an unlocked device
-there is no universal external-boot path -\/- starting an external image
-is vendor- and device-specific, unofficial, and cumbersome even where it
-works at all \citep{bootloader-wall-of-shame}. Full disk and memory
-access -\/- raw disk imaging, comprehensive file inspection, and live
-RAM capture -\/- is blocked without special privileges. Gaining those
-privileges usually breaks verified boot and attestation, causing the
-device to be treated as untrusted; can disable or degrade security
-features that depend on the device remaining locked down and unmodified;
-and can cause many applications, including banking, enterprise, and
-content-protected applications, to refuse to run. The net effect is that
-the tools needed to verify the system require breaking those same
-guarantees before they can be applied -\/- and, as Section 8 showed, the
-privileges so gained are themselves bounded and do not amount to the
-external trusted vantage point that verification needs.
+unlocking it \citep{aosp-fastboot-protocol},
+\citep{aosp-bootloader-locking}. Even on an unlocked device there is no
+universal external-boot path -\/- starting an external image is vendor-
+and device-specific, and cumbersome even where it works at all
+\citep{bootloader-wall-of-shame}. Full disk and memory access -\/- raw
+disk imaging, comprehensive file inspection, and live RAM capture -\/-
+is blocked without special privileges. Gaining those privileges usually
+breaks verified boot and attestation, causing the device to be treated
+as untrusted; can disable or degrade security features that depend on
+the device remaining locked down and unmodified; and can cause many
+applications, including banking, enterprise, and content-protected
+applications, to refuse to run. The net effect is that the tools needed
+to verify the system require breaking those same guarantees before they
+can be applied -\/- and, as Section 8 showed, the privileges so gained
+are themselves bounded and do not amount to the external trusted vantage
+point that verification needs.
 
 Table 3 compares specific analysis capabilities. The values "Yes" and
 "No" indicate that a capability is, respectively, generally available or
@@ -1449,44 +1451,43 @@ application-processor operating system -\/- stock or aftermarket -\/-
 does not inspect, and remotely exploitable memory corruption in a
 baseband stack is a demonstrated class of attack
 \citep{weinmann-baseband}. On several Samsung Galaxy models the
-proprietary modem firmware was moreover found to implement a
-remote-file-service protocol capable of reading, writing, and deleting
-files on the application processor\textquotesingle s storage -\/-
-characterized by its finders as a backdoor, though whether it was a
-deliberate backdoor or an incidental feature of the
-modem\textquotesingle s file service is disputed
-\citep{replicant-samsung-backdoor}; analysis of current flagship
-hardware continues to uncover undisclosed baseband command interfaces
-and vendor-confirmed zero-day flaws, including denial of cellular
-service and arbitrary access to the application
-processor\textquotesingle s file system from the baseband
-\citep{li-basemirror}. The Samsung finding was itself obtained by
-reverse-engineering the proprietary modem binary, a reminder that
-realizing inspectability in practice can draw on the
+proprietary radio-interface-layer software on the application processor
+-\/- the vendor library that mediates the modem -\/- was moreover found
+to implement a remote-file-service protocol through which the modem can
+read, write, and delete files on that storage; its finders characterized
+this as a backdoor, though, the handler being an ordinary modem
+file-service routine in vendor software, whether it was a deliberate
+backdoor rather than an incidental feature is not established
+\citep{replicant-samsung-backdoor}. Analysis of current Samsung hardware
+continues to uncover undisclosed baseband command interfaces and
+vendor-confirmed zero-day flaws, including denial of cellular service
+and arbitrary access to the application processor\textquotesingle s file
+system from the baseband \citep{li-basemirror}. The Samsung finding was
+itself obtained by reverse-engineering that proprietary vendor library,
+a reminder that realizing inspectability in practice can draw on the
 modify-and-reverse-engineer freedoms held conceptually distinct from it
 in Section 3, and can carry legal exposure the owner or researcher must
 navigate: the finders rested the lawfulness of their decompilation on
 the interoperability exception in Article 6 of the EU Computer Programs
 Directive \citep{replicant-samsung-backdoor-wiki},
-\citep{eu-computer-programs-directive}, while in the United States
-comparable work depends on the periodic, narrowly drawn
-good-faith-security-research and device-repair exemptions to the
+\citep{eu-computer-programs-directive}, whose United States parallel is
+the permanent reverse-engineering-for-interoperability exemption to the
 DMCA\textquotesingle s anti-circumvention prohibition
-\citep{dmca-1201-exemptions-2024}. A discrete secure element, where
-present, likewise runs vendor firmware on its own chip. The trusted
-execution environment should not be conflated with these: on a platform
-such as this one it shares the application processor and is signed and
-checked by the bootloader, so it falls under verified boot rather than
-being an uninspected separate processor; its limitation for the owner is
-that its firmware, like the baseband\textquotesingle s, is not something
-the owner can independently image and audit, not that it runs
-unverified. The broader pattern is that persistent implants have
-migrated toward low-level firmware beneath the operating system,
-installable by ordinary malware once the system is compromised
-\citep{zaddach-hdd-backdoor}; the strongest owner-inspectable
-configuration still cannot independently audit that firmware layer,
-echoing in a new place the principle that a system cannot be trusted to
-report truthfully on its own state \citep{thompson-trusting-trust}.
+\citep{dmca-1201f}. A discrete secure element, where present, likewise
+runs vendor firmware on its own chip. The trusted execution environment
+should not be conflated with these: on a platform such as this one it
+shares the application processor and is signed and checked by the
+bootloader, so it falls under verified boot rather than being an
+uninspected separate processor; its limitation for the owner is that its
+firmware, like the baseband\textquotesingle s, is not something the
+owner can independently image and audit, not that it runs unverified.
+The broader pattern is that persistent implants have migrated toward
+low-level firmware beneath the operating system, installable by ordinary
+malware once the system is compromised \citep{zaddach-hdd-backdoor}; the
+strongest owner-inspectable configuration still cannot independently
+audit that firmware layer, echoing in a new place the principle that a
+system cannot be trusted to report truthfully on its own state
+\citep{thompson-trusting-trust}.
 
 A third objection holds that verified boot and hardware key attestation
 already furnish the integrity assurance that owner-inspection is meant
@@ -1730,8 +1731,7 @@ bounded by SELinux and kernel lockdown \\
 Boot an external trusted system & Yes, from external media & Not
 supported while locked: the bootloader boots only signed images and an
 external system requires first unlocking \citep{aosp-fastboot-protocol},
-\citep{aosp-bootloader-locking}; the path is then device-specific and
-unofficial \\
+\citep{aosp-bootloader-locking}; the path is then device-specific \\
 Remove and image storage & Yes: detach the storage and image it on a
 trusted controller & Storage is soldered; chip-level reading is
 destructive, and the data returns as ciphertext under a hardware-bound
@@ -1872,7 +1872,7 @@ designs rarely satisfied together. The forensic literature surveyed here
 does not claim that compromise is undetectable on stock devices; it
 claims that detection is constrained by observability, and that a
 negative result is accordingly weak evidence of integrity. Building on
-that, and on the owner-enrolled verified-boot path of Section 8 and the
+that, and on the owner-enrolled verified-boot path of Section 3 and the
 owner-signed GrapheneOS configuration of Section 12, this
 paper\textquotesingle s own position is that auditability could be
 improved without abandoning existing protections. That position suggests
