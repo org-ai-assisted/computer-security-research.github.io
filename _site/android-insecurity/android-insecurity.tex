@@ -1325,14 +1325,14 @@ while giving up the enforced, attestable verified-boot state -\/- an
 illustration of the squeeze this paper describes, not a counterexample
 to it.
 
-A smaller number support re-locking the bootloader after installation
-\citep{grapheneos-install-locking}, \citep{grapheneos-setup-wizard}, and
-this is where the owner-inspectability criterion does its sharpest
-discriminating work, because the re-locked chain can be anchored to
-either of two very different keys. Anchored to the
-project\textquotesingle s own key -\/- the default when an owner flashes
-official GrapheneOS release builds, which replace the
-vendor\textquotesingle s verified-boot key in the
+A smaller number of them support re-locking the bootloader after
+installation \citep{grapheneos-install-locking},
+\citep{grapheneos-setup-wizard}, and this is where the
+owner-inspectability criterion does its sharpest discriminating work,
+because the re-locked chain can be anchored to either of two very
+different keys. Anchored to the project\textquotesingle s own key -\/-
+the default when an owner flashes official GrapheneOS release builds,
+which replace the vendor\textquotesingle s verified-boot key in the
 device\textquotesingle s secure element with
 GrapheneOS\textquotesingle s own \citep{grapheneos-install-locking} -\/-
 re-locking restores verified boot but only substitutes one
