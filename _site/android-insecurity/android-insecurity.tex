@@ -259,15 +259,16 @@ documented instance \citep{gamba2020preinstalled}; Carrier IQ,
 preinstalled carrier diagnostic software that wrote dialer keypresses
 and SMS text to system logs on some devices, is an earlier one
 \citep{eckersley-carrieriq}. Content protection is the platform-control
-counterpart on the content side: hardware-backed
-digital-rights-management binds decryption and the decoded video frames
-to the same hardware chain of trust as verified boot, protecting premium
-content through a trusted output path, so that access to protected media
-is released on terms the content provider sets and the decoded stream is
-withheld from the device owner \citep{aosp-drm}. This paper treats those
-platform-control and content-protection objectives as out of scope to
-analyze (Section 3) and returns, for attestation, to whom that guarantee
-actually runs (Section 8).
+counterpart on the content side: on devices with the requisite hardware
+support, hardware-backed digital-rights-management can bind decryption
+and the decoded video frames to the same hardware chain of trust as
+verified boot, routing protected content through a trusted output path
+so that the owner may play licensed media but cannot directly extract
+the decoded stream, which is released only on terms the content provider
+sets \citep{aosp-drm}. This paper treats those platform-control and
+content-protection objectives as out of scope to analyze (Section 3) and
+returns, for attestation, to whom that guarantee actually runs (Section
+8).
 
 \subsection{3. Threat Model and Scope}\label{threat-model-and-scope}
 
