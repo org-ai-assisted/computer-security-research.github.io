@@ -157,6 +157,25 @@ quotes = [
   { text = "The Kaspersky app scans the device's entire file system.", label = "Full-scan scope", note = "Kaspersky for Android online help, About page." },
 ]
 
+[aosp-app-sandbox]
+label = "Android Application Sandbox -- per-app UID isolation"
+claims = [
+  { section = "Sec. 2", text = "Each app gets a distinct kernel-level user identity and is isolated so apps cannot read each other's data by default." },
+]
+quotes = [
+  { text = "Android assigns a unique user ID (UID) to each Android app and runs it in its own process. Android uses the UID to set up a kernel-level Application Sandbox.", label = "Per-app UID sandbox", note = "Android Open Source Project, Application Sandbox." },
+  { text = "By default, apps can't interact with each other and have limited access to the OS.", label = "Default isolation" },
+]
+
+[aosp-root-process-isolation]
+label = "Android policy -- minimize root (uid-0) processes"
+claims = [
+  { section = "Sec. 2", text = "Android deliberately reduces the number of root processes to cut privilege-escalation risk." },
+]
+quotes = [
+  { text = "Root processes are the most frequent target of privilege escalation attacks, so reducing the number of root processes reduces risk of privilege escalation.", label = "Reduce root processes", note = "Android Open Source Project, Implement security (Isolate root processes)." },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
