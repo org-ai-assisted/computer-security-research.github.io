@@ -888,4 +888,10 @@ no_quote = "Breeuwsma, Digital Investigation 2006 -- Elsevier paywalled; no open
 no_quote = "Yang et al., Digital Investigation 2017 -- Elsevier paywalled; no open abstract."
 
 [weinmann-baseband]
-no_quote = "Weinmann, WOOT 2012 -- USENIX abstract page returns HTTP 403 to automated fetch, researchr.org mirror unreachable, and web.archive.org is blocked for this client this pass; abstract not retrieved verbatim. Claim (Sec. 12: baseband stacks carry remotely exploitable memory corruptions) rests on the citation (WOOT 2012 best-paper award)."
+label = "Weinmann, WOOT 2012 -- remotely exploitable memory corruptions in baseband stacks on a separate, less-hardened processor"
+claims = [
+  { section = "Sec. 12", text = "the cellular baseband runs vendor firmware on a separate, less-hardened processor and carries remotely exploitable memory corruptions, triggerable over the air." },
+]
+quotes = [
+  { text = "\"the cellular baseband stack of most smartphones runs on a separate processor and is significantly less hardened, if at all.\" / \"In this paper we demonstrate the risk of remotely exploitable memory corruptions in cellular baseband stacks.\" / \"The vulnerabilities can be triggered over the air interface using a rogue GSM base station.\" (verified from the WOOT 2012 PDF: usenix.org/system/files/conference/woot12/woot12-final24.pdf)" },
+]
