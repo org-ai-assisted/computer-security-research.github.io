@@ -109,20 +109,25 @@ to varying degrees.
 
 On a vendor-locked device the owner is, in practice, obliged to trust
 the platform operator and device vendor -\/- on a stock Android phone,
-Google and the manufacturer -\/- for both application delivery
-\citep{google-play-help} and system updates
-\citep{aosp-sepolicy-gmscore}, because the device cannot be fully
-examined from the outside while it remains locked down. If that trust
-relationship is abused -\/- through compromise of the delivery
-infrastructure, coercion of an operator, or a malicious insider -\/-
-targeted malicious installations or updates may be difficult to detect,
-independently verify, or prove to a third party.
+Google for application delivery through the Play Store
+\citep{google-play-help}, and the device manufacturer for system
+updates, which on a non-Google device such as a Samsung are the
+manufacturer\textquotesingle s own rather than Google\textquotesingle s
+(Section 6), even though Google\textquotesingle s services retain a
+privileged role in the update path on devices certified for Google
+Mobile Services \citep{aosp-sepolicy-gmscore} -\/- because the device
+cannot be fully examined from the outside while it remains locked down.
+If that trust relationship is abused -\/- through compromise of the
+delivery infrastructure, coercion of an operator, or a malicious insider
+-\/- targeted malicious installations or updates may be difficult to
+detect, independently verify, or prove to a third party.
 
 The same constraints bear on malware investigation, though their force
 depends on the class of malware. Commodity, application-level threats
-can often be detected on the device itself, by consumer antivirus or
-Google\textquotesingle s Play Protect, without unlocking or modifying it
--\/- a point Section 12 takes up in full. The limitation bites for the
+can often be detected on the device itself, by consumer antivirus
+\citep{kaspersky-android} or Google\textquotesingle s Play Protect
+\citep{google-play-protect}, without unlocking or modifying it -\/- a
+point Section 12 takes up in full. The limitation bites for the
 targeted, low-level compromise: a kernel-space rootkit or
 sub-operating-system implant masks its own presence and sits beneath any
 in-system scanner, which it can evade whatever that
