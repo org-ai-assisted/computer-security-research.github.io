@@ -3,12 +3,14 @@
 # is pulled from refs.bib by journal-maker. Quotes are verbatim.
 
 [aosp-selinux]
-label = "SELinux -- MAC binds even root"
+label = "SELinux -- MAC binds even root; confinement limits a compromise's reach"
 claims = [
   { section = "Sec. 3", text = "SELinux confines even uid-0 processes to permitted domains." },
+  { section = "Sec. 2", text = "SELinux confinement contains a compromise -- it protects and confines system services and reduces the effects of malicious software, so one component's compromise does not yield the whole system." },
 ]
 quotes = [
   { text = "\"Android uses Security-Enhanced Linux (SELinux) to enforce mandatory access control (MAC) over all processes, even processes running with root/superuser privileges (Linux capabilities).\"" },
+  { text = "Android can better protect and confine system services, control access to application data and system logs, reduce the effects of malicious software, and protect users from potential flaws in code on mobile devices.", label = "Confines services, reduces malware's reach", note = "Android Open Source Project, Security-Enhanced Linux in Android." },
 ]
 
 [kernel-lockdown]
@@ -67,12 +69,14 @@ quotes = [
 ]
 
 [aosp-file-based-encryption]
-label = "File-based encryption -- mandatory since Android 10, available since Android 7"
+label = "File-based encryption -- mandatory since Android 10; keys protected in hardware (TEE)"
 claims = [
   { section = "Sec. 7, 11", text = "FBE mandatory on devices launched with Android 10+, available since Android 7." },
+  { section = "Sec. 2", text = "FBE encryption keys are protected by Keymaster/KeyMint in a Trusted Execution Environment -- the key is bound to dedicated hardware." },
 ]
 quotes = [
   { text = "\"Android 7.0 and higher supports file-based encryption (FBE).\" / \"All devices launching with Android 10 and higher are required to use file-based encryption.\"" },
+  { text = "KeyMint/Keymaster and Gatekeeper must be implemented in a Trusted Execution Environment (TEE) to provide protection for the DE keys so that an unauthorized OS (custom OS flashed onto the device) cannot simply request the DE keys.", label = "Keys bound to the TEE (dedicated hardware)", note = "Android Open Source Project, File-Based Encryption." },
 ]
 
 [play-integrity-overview]
