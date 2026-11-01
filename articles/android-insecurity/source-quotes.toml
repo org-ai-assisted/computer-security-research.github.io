@@ -240,6 +240,26 @@ quotes = [
   { text = "Apache 2.0 is a commercial and open-source-friendly software license.", label = "Apache 2.0 license", note = "Android Open Source Project, Content License; the preferred license for all parts of AOSP." },
 ]
 
+[google-driver-binaries]
+label = "AOSP needs vendor proprietary driver binaries (non-open license)"
+claims = [
+  { section = "Sec. 3", text = "Running AOSP on real hardware requires device-specific proprietary binary drivers the vendor distributes under a non-open, personal-use license." },
+]
+quotes = [
+  { text = "This page contains binary hardware support files for Nexus and Pixel phones and other devices that are available for users of the Android Open-Source Project.", label = "Proprietary driver binaries", note = "Google, Driver Binaries for Nexus and Pixel Devices." },
+  { text = "These files are for use only on your personal devices and may not be redistributed by you or used in any way except as specifically set forth in the license terms enclosed in each individual download.", label = "Non-open, personal-use license" },
+]
+
+[google-gms]
+label = "Google Mobile Services is proprietary and not part of AOSP"
+claims = [
+  { section = "Sec. 3", text = "The mainstream Google Android experience adds Google Mobile Services, which is proprietary, not part of AOSP, and licensed from Google." },
+]
+quotes = [
+  { text = "GMS is not part of AOSP.", label = "Not in AOSP", note = "Google, Google Mobile Services (android.com/gms); the page renders in a mixed locale but the English strings are stable." },
+  { text = "GMS is only available through a license with Google and delivers a holistic set of popular apps and cloud-based services.", label = "Licensed from Google" },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
