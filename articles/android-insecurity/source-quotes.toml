@@ -783,10 +783,21 @@ quotes = [
   { text = "\"YELLOW: Warning screen for LOCKED devices with custom root of trust set / ORANGE: Warning screen for UNLOCKED devices / RED (eio): Warning screen for dm-verity corruption / RED (no os found): No valid OS found\"" },
 ]
 
+[aosp-fastboot-protocol]
+label = "Fastboot protocol -- RAM-boots a supplied image, but a locked (secure) bootloader refuses an unsigned one"
+claims = [
+  { section = "Sec. 10", text = "The bootloader can start a supplied boot image from memory without flashing it, but a locked (secure) bootloader requires a valid signature before it will boot or install any image, so an external, unsigned system cannot be started until the bootloader is unlocked." },
+  { section = "Sec. 13", text = "As sold, the locked device boots only signed images and an external system requires first unlocking the bootloader." },
+]
+quotes = [
+  { text = "The previously downloaded data is a boot.img and should be booted according to the normal procedure for a boot.img", label = "RAM-boot: boot a supplied image staged in memory, not flashed", note = "Android Open Source Project, fastboot/README.md, Command Reference; download stages the image in memory and flash is the separate write-to-partition command, so boot starts the image without writing it to storage." },
+  { text = "If the value is \"yes\", this is a secure bootloader requiring a signature before it will install or boot images.", label = "Locked/secure bootloader refuses an unsigned external image", note = "Android Open Source Project, fastboot/README.md, getvar variables." },
+]
+
 [bootloader-wall-of-shame]
 label = "Wall of Shame -- crowd-sourced list of non-unlockable devices"
 claims = [
-  { section = "Sec. 13", text = "a large class of carrier/vendor-locked devices cannot be unlocked by their owners." },
+  { section = "Sec. 10, 13", text = "a large class of carrier/vendor-locked devices cannot be unlocked by their owners, so external boot is not a universal capability." },
 ]
 quotes = [
   { text = "\"Bootloader Unlock: Wall of Shame\" (banner title) -- a crowd-sourced tracker of vendors/devices that restrict bootloader unlocking; licensed CC BY-NC-SA. (README tagline carries a non-ASCII emoji, omitted here.)" },
