@@ -61,7 +61,7 @@
     card.appendChild(cnav); card.appendChild(cbody);
     document.body.appendChild(card);
 
-    var hideTimer = null, curIdx = -1, curAnchor = null, pinned = false;
+    var hideTimer = null, curIdx = -1, curAnchor = null, pinned = false, moved = false;
     function refFragment(id) {
       var frag = document.createDocumentFragment();
       // Prefer the verbatim source-quote block when one is embedded for this key
@@ -97,6 +97,7 @@
     function show(anchor, idx) {
       if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
       pinned = false;            // a fresh hover/focus is transient again
+      moved = false;             // re-anchor to the citation (drag offset cleared)
       curAnchor = anchor;
       card.hidden = false;
       populate(idx);
@@ -113,7 +114,8 @@
       cancelHide();
       pinned = true;
       populate(ni);
-      if (curAnchor) { place(curAnchor); }
+      // Keep a dragged card where the user put it; otherwise re-anchor on resize.
+      if (curAnchor && !moved) { place(curAnchor); }
     }
     for (var c = 0; c < cites.length; c++) {
       (function (a) {
@@ -131,6 +133,33 @@
     card.addEventListener("mouseleave", hideSoon);
     cprev.addEventListener("click", function () { step(-1); });
     cnext.addEventListener("click", function () { step(1); });
+    // Drag the card by its nav bar to reposition it (pointer); dragging pins it so
+    // it does not auto-hide, and sets `moved` so stepping refs keeps the new spot.
+    (function () {
+      var dragging = false, activeId = -1, sx = 0, sy = 0, sl = 0, st = 0;
+      cnav.addEventListener("pointerdown", function (e) {
+        if (dragging) { return; }   // ignore a second pointer (multi-touch)
+        if (e.target.closest && e.target.closest("button")) { return; }
+        dragging = true; activeId = e.pointerId; pinned = true; moved = true; cancelHide();
+        sx = e.clientX; sy = e.clientY;
+        sl = parseFloat(card.style.left) || 0; st = parseFloat(card.style.top) || 0;
+        card.classList.add("dragging");
+        try { cnav.setPointerCapture(e.pointerId); } catch (ignore) {}
+        e.preventDefault();
+      });
+      cnav.addEventListener("pointermove", function (e) {
+        if (!dragging || e.pointerId !== activeId) { return; }
+        var nl = sl + (e.clientX - sx), nt = st + (e.clientY - sy);
+        var maxL = window.pageXOffset + document.documentElement.clientWidth - card.offsetWidth - 8;
+        if (nl > maxL) { nl = maxL; }
+        if (nl < window.pageXOffset + 8) { nl = window.pageXOffset + 8; }
+        if (nt < window.pageYOffset + 8) { nt = window.pageYOffset + 8; }
+        card.style.left = nl + "px"; card.style.top = nt + "px";
+      });
+      function endDrag(e) { if (dragging && (!e || e.pointerId === activeId)) { dragging = false; activeId = -1; card.classList.remove("dragging"); } }
+      cnav.addEventListener("pointerup", endDrag);
+      cnav.addEventListener("pointercancel", endDrag);
+    })();
     // Keyboard: Escape dismisses; Left/Right step prev/next while the card is
     // open and either pinned or the focus is on a cite anchor / inside the card
     // (so arrow keys are not hijacked from ordinary page scrolling).
