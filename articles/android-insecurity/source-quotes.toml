@@ -328,12 +328,14 @@ quotes = [
 label = "Android DRM framework -- hardware-backed content protection bound to the boot chain of trust"
 claims = [
   { section = "Sec. 2", text = "On devices with the requisite hardware support, hardware-backed digital-rights-management can bind decryption and the decoded video frames to the same hardware chain of trust as verified boot, routing protected content through a trusted output path so the owner may play licensed media but cannot directly extract the decoded stream, which is released only on the content provider's terms -- the content-protection objective the paper names and places out of scope." },
+  { section = "Sec. 8", text = "content-protection components rely on hardware-backed DRM to secure premium content; a device lacking the hardware features cannot present it, so playback is restricted (silently degraded) rather than refused outright." },
 ]
 quotes = [
   { text = "The Android platform provides an extensible DRM framework that lets apps manage rights-protected content according to the license constraints associated with the content.", label = "Rights-protected content on the provider's terms", note = "Android Open Source Project, DRM (Framework section); verified verbatim against the live page." },
   { text = "The DRM plugin is integrated with the Android DRM framework and can use hardware-backed protection to secure premium content and user credentials.", label = "Hardware-backed protection of premium content" },
   { text = "The hardware capabilities of the device should include hardware secure boot to establish a chain of trust of security and protection of cryptographic keys.", label = "Anchored to the same hardware chain of trust as verified boot" },
   { text = "Content protection capabilities of the device should include protection of decrypted frames in the device and content protection through a trusted output protection mechanism.", label = "Decoded frames protected from the owner via a trusted output path" },
+  { text = "Not all hardware platforms support all of the above security and content protection features.", label = "no hardware level -> premium content restricted/degraded", note = "AOSP DRM, Plugins section; verified verbatim against the live page." },
 ]
 
 [grapheneos-usage]
@@ -939,11 +941,14 @@ label = "Play Integrity device verdict -- locked bootloader + certified image, n
 claims = [
   { section = "Sec. 8", text = "the device-integrity verdict attests boot and configuration state (a locked bootloader and a vendor-certified OS image), not runtime malware-freeness, so a stock, certified, locked device can still be compromised and pass." },
   { section = "Sec. 8", text = "from the platform's standpoint the device-integrity verdict is a security feature: it gives a relying service hardware-backed assurance that the device is in a known, unmodified state -- a locked bootloader and a certified manufacturer OS image." },
+  { section = "Sec. 8", text = "applications use the verdict to gate access -- the backend decides how to act on the verdict and can block a device that cannot present the required tier (at least device integrity, some requiring strong integrity)." },
 ]
 quotes = [
   { text = "\"The app is running on a genuine and certified Android device. On Android 13 and higher, there is hardware-backed proof that the device bootloader is locked and the loaded Android OS is a certified device manufacturer image.\"", label = "MEETS_DEVICE_INTEGRITY" },
   { text = "\"The device bootloader can be locked or unlocked, and the boot state can be verified or unverified.\"", label = "MEETS_BASIC_INTEGRITY" },
   { text = "\"On Android 13 and higher, the MEETS_STRONG_INTEGRITY verdict requires MEETS_DEVICE_INTEGRITY and security updates in the last year for all partitions of the device...\"", label = "MEETS_STRONG_INTEGRITY" },
+  { text = "\"Your app's backend server can decide how to act based on the verdict based on your risk tolerance.\"", label = "backend acts on the verdict" },
+  { text = "\"If the user can't fulfill these requirements you could block them from the server action.\"", label = "refuse / block a failing device" },
 ]
 
 [play-protect-certification]
