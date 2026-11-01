@@ -145,7 +145,7 @@ quotes = [
 [google-play-protect]
 label = "Google Play Protect -- the built-in app scanner"
 quotes = [
-  { text = "Google Play Protect automatically scans all of the apps on Android phones and works to prevent the installation of harmful apps, making it the most widely deployed mobile threat protection service in the world.", label = "Ubiquity", note = "Google Play Protect developer documentation." },
+  { text = "Every day, Google Play Protect automatically scans all of the apps on Android phones and works to prevent the installation of harmful apps, making it the most widely deployed mobile threat protection service in the world.", label = "Ubiquity", note = "Google Play Protect developer documentation; verified verbatim." },
   { text = "Google Play Protect scans 200 billion Android apps daily to make sure that everything remains spot on.", label = "Scale" },
 ]
 
