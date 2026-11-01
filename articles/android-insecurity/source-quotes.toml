@@ -220,13 +220,24 @@ quotes = [
 ]
 
 [nist-sp800-86]
-label = "NIST SP 800-86 -- examine a copy on a forensic workstation, not the original"
+label = "NIST SP 800-86 -- examine a hashed copy on a forensic workstation; reproducible proof"
 claims = [
   { section = "Sec. 1", text = "Standard forensic practice is to examine the device from a separate trusted system and work from a copy, not the live original." },
+  { section = "Sec. 3", text = "A cryptographically hashed forensic image lets an independent examiner verify integrity and reproduce the analysis -- proof that does not require trusting the examiner." },
 ]
 quotes = [
   { text = "Analysts should examine copies of files, not the original files.", label = "Examine copies, not originals", note = "NIST SP 800-86, Guide to Integrating Forensic Techniques into Incident Response." },
   { text = "The analyst can then use the working copy without affecting the original files or the master copy.", label = "Work from a copy" },
+  { text = "Data integrity verification typically consists of using tools to compute the message digest of the original and copied data, then comparing the digests to make sure that they are the same.", label = "Hash-verify for third-party proof" },
+]
+
+[aosp-open-source]
+label = "AOSP -- Android's code is released under the Apache 2.0 open-source license"
+claims = [
+  { section = "Sec. 3", text = "Android's system software is released as the Android Open Source Project under the open-source-friendly Apache 2.0 license, making it unusually openly specified for a vendor-locked platform." },
+]
+quotes = [
+  { text = "Apache 2.0 is a commercial and open-source-friendly software license.", label = "Apache 2.0 license", note = "Android Open Source Project, Content License; the preferred license for all parts of AOSP." },
 ]
 
 [grapheneos-usage]
