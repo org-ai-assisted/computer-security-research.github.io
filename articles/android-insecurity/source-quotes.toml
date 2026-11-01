@@ -805,7 +805,7 @@ claims = [
   { section = "Sec. 13", text = "unlocking is gated behind an explicit warning (and wipe)." },
 ]
 quotes = [
-  { text = "\"YELLOW: Warning screen for LOCKED devices with custom root of trust set / ORANGE: Warning screen for UNLOCKED devices / RED (eio): Warning screen for dm-verity corruption / RED (no os found): No valid OS found\"" },
+  { text = "\"YELLOW: Warning screen for LOCKED devices with custom root of trust set\" / \"ORANGE: Warning screen for UNLOCKED devices\" / \"RED (eio): Warning screen for dm-verity corruption\" / \"RED (no os found): No valid OS found\"", note = "Four separate boot-state list items from the AOSP Verified Boot flow page; each quoted individually so the slashes are not part of any quotation." },
 ]
 
 [aosp-fastboot-protocol]
