@@ -180,26 +180,28 @@ Android\textquotesingle s security model is built around several
 mutually reinforcing mechanisms. Android Verified Boot (AVB) establishes
 a chain of trust from an immutable hardware root of trust through the
 bootloader and operating-system partitions, so that only software signed
-by the vendor executes during startup; a locked bootloader refuses to
-load or boot any image that is not so signed. Application sandboxing
-isolates each application, giving it a distinct kernel-level user
-identity and a private data directory that other applications cannot
-read. Mandatory Access Control, implemented through SELinux, confines
-even privileged system processes to narrowly defined domains, so that a
-compromise of one component does not automatically yield access to the
-whole system. File-based encryption and full-disk encryption protect
-data at rest, with the principal encryption key bound to dedicated
-hardware.
+by the vendor executes during startup \citep{aosp-verified-boot}; a
+locked bootloader refuses to load or boot any image that is not so
+signed \citep{aosp-bootloader-locking}. Application sandboxing isolates
+each application, giving it a distinct kernel-level user identity and a
+private data directory that other applications cannot read
+\citep{aosp-app-sandbox}. Mandatory Access Control, implemented through
+SELinux, confines even privileged system processes to narrowly defined
+domains, so that a compromise of one component does not automatically
+yield access to the whole system \citep{aosp-selinux}. File-based
+encryption, mandatory since Android 10, protects data at rest, with the
+principal encryption key bound to dedicated hardware
+\citep{aosp-file-based-encryption}.
 
 These mechanisms are effective at their stated purpose: constraining
 what ordinary software, including most malicious software, can do once
-it is running on the device. That effectiveness is real but neither
-symmetric nor complete. A sufficiently capable adversary is not reliably
-excluded by it -\/- as Sections 8 and 12 develop, such an adversary can
-compromise the already-booted, legitimately signed system at runtime, or
-arrive inside the vendor-signed image itself, without the device failing
-attestation, and verified boot has demonstrated defeats beneath the
-operating system.
+it is running on the device \citep{mayrhofer-android-security-model}.
+That effectiveness is real but neither symmetric nor complete. A
+sufficiently capable adversary is not reliably excluded by it -\/- as
+Sections 8 and 12 develop, such an adversary can compromise the
+already-booted, legitimately signed system at runtime, or arrive inside
+the vendor-signed image itself, without the device failing attestation,
+and verified boot has demonstrated defeats beneath the operating system.
 
 The same design, meanwhile, withholds from the device owner the
 administrative privileges that would permit raw disk access, live memory
@@ -268,18 +270,20 @@ where a cited source speaks to them and does not document them to the
 same depth.
 
 Terminology is used consistently throughout. Stock Android denotes a
-typical device as sold, with a locked bootloader and without root
-access.
+typical device as sold, with a locked bootloader
+\citep{aosp-bootloader-locking} and without root access
+\citep{vidas-android-collection}.
 
 Root access denotes uid-0 authority within the running operating system:
 the ability, in principle, to read and write files, inspect processes,
 and alter system components that an ordinary user cannot. The term is
 inherited from Unix, where "root" is the superuser account; Android,
 however, exposes no such login account. uid 0 exists as a kernel
-identity held by init and a deliberately shrinking set of system
-daemons, but a stock production ("user") build ships no owner-accessible
-"su" and refuses to run its debug bridge (adbd) as root, so the owner
-cannot assume that identity at all without first modifying the device.
+identity held by init and a deliberately shrinking set of system daemons
+\citep{aosp-root-process-isolation}, but a stock production ("user")
+build ships no owner-accessible "su" and refuses to run its debug bridge
+(adbd) as root, so the owner cannot assume that identity at all without
+first modifying the device.
 
 Equally important is what this authority does not include on a modern
 hardened device, because the common assumption that root confers total
