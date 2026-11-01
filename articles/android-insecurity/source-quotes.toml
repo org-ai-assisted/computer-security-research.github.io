@@ -1110,3 +1110,24 @@ claims = [
 quotes = [
   { text = "\"the cellular baseband stack of most smartphones runs on a separate processor and is significantly less hardened, if at all.\" / \"In this paper we demonstrate the risk of remotely exploitable memory corruptions in cellular baseband stacks.\" / \"The vulnerabilities can be triggered over the air interface using a rogue GSM base station.\"", note = "Verified from the WOOT 2012 PDF: usenix.org/system/files/conference/woot12/woot12-final24.pdf" },
 ]
+
+[replicant-samsung-backdoor]
+label = "Samsung modem back-door -- proprietary modem firmware with file I/O into AP storage (intent disputed)"
+claims = [
+  { section = "Sec. 12", text = "On several Samsung Galaxy models the proprietary modem firmware implements a protocol capable of reading, writing, and deleting files on the application processor's storage; its finders called it a backdoor, while whether the capability was deliberate or an incidental modem file-service feature is disputed." },
+]
+quotes = [
+  { text = "actually implements a backdoor that lets the modem perform remote file I/O operations on the file system.", label = "Finders' characterization as a backdoor", note = "Kocialkowski, FSF/Replicant writeup; the 'backdoor' label is the finders' own, and the intent reading was contested." },
+  { text = "This program is shipped with the Samsung Galaxy devices and makes it possible for the modem to read, write, and delete files on the phone's storage.", label = "Capability -- modem file I/O on AP storage" },
+  { text = "On several phone models, this program runs with sufficient rights to access and modify the user's personal data.", label = "Scoped to several models" },
+]
+
+[li-basemirror]
+label = "Li et al., CCS 2024 -- baseband is a separate processor exposing undisclosed commands; vendor-confirmed zero-days reach the AP file system on current hardware"
+claims = [
+  { section = "Sec. 12", text = "the baseband runs on its own processor separated from the application processor, exposes undisclosed command interfaces, and carries vendor-confirmed vulnerabilities that cause denial of cellular service and arbitrary access to the application processor's file system." },
+]
+quotes = [
+  { text = "the baseband firmware runs on a dedicated Cellular Processor (CP) with a real-time operating system (RTOS), rendering it entirely separated from the mobile device's main processor, commonly referred to as the Application Processor (AP)", label = "Baseband is a separate processor", note = "Li, Wen, Lin, BaseMirror, CCS 2024; verified verbatim from author PDF." },
+  { text = "We identified 8 zero-day vulnerabilities that exploit baseband commands to trigger denial-of-service attacks on the CP and arbitrary file accesses on the AP.", label = "Vendor-confirmed zero-days; AP file access" },
+]
