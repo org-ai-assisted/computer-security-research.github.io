@@ -124,6 +124,16 @@ quotes = [
   { text = "\"Added hardware-backed storage of the encryption key using Trusted Execution Environment's (TEE) signing capability (such as in a TrustZone).\" / \"The master key is encrypted with 128-bit AES via calls to the OpenSSL library.\"" },
 ]
 
+[google-play-protect-remove]
+label = "Play Protect -- a privileged GMS component that disables/removes other apps"
+claims = [
+  { section = "Sec. 12", text = "Unlike an ordinary sandboxed third-party app, Play Protect ships as a privileged part of Google Mobile Services and can disable or automatically remove other apps on the device -- yet it still runs inside the running OS." },
+]
+quotes = [
+  { text = "The most harmful PHAs are automatically removed from the device, while less severe PHAs are disabled.", label = "Removes/disables other apps", note = "Google, Play Protect On-device protections (developers.google.com/android/play-protect/client-protections); verified verbatim." },
+  { text = "Google Play Protect can remove the PHA from affected devices and block future installs.", label = "Device-wide removal" },
+]
+
 [grapheneos-auditor]
 label = "GrapheneOS Auditor -- hardware-backed remote attestation from a second device"
 claims = [
