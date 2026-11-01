@@ -258,10 +258,16 @@ tracking software that the owner cannot uninstall without root is a
 documented instance \citep{gamba2020preinstalled}; Carrier IQ,
 preinstalled carrier diagnostic software that wrote dialer keypresses
 and SMS text to system logs on some devices, is an earlier one
-\citep{eckersley-carrieriq}. This paper treats those platform-control
-and content-protection objectives as out of scope to analyze (Section 3)
-and returns, for attestation, to whom that guarantee actually runs
-(Section 8).
+\citep{eckersley-carrieriq}. Content protection is the platform-control
+counterpart on the content side: hardware-backed
+digital-rights-management binds decryption and the decoded video frames
+to the same hardware chain of trust as verified boot, protecting premium
+content through a trusted output path, so that access to protected media
+is released on terms the content provider sets and the decoded stream is
+withheld from the device owner \citep{aosp-drm}. This paper treats those
+platform-control and content-protection objectives as out of scope to
+analyze (Section 3) and returns, for attestation, to whom that guarantee
+actually runs (Section 8).
 
 \subsection{3. Threat Model and Scope}\label{threat-model-and-scope}
 
@@ -594,7 +600,13 @@ update is delivered through Google or through the device vendor varies
 by manufacturer. The AOSP security policy itself grants Google Play
 services access to the system-update service and to the A/B update
 engine, confirming its privileged role in the update path on such
-devices \citep{aosp-sepolicy-gmscore}.
+devices \citep{aosp-sepolicy-gmscore}. This Google Play services channel
+is not one the user can disable: an independent measurement study of
+GMS-certified handsets found that Google Play services and the Play
+store transmit a considerable volume of data to Google even when the
+device is idle and privacy settings are enabled, and reports that Google
+confirmed there is no opt-out from this collection
+\citep{liu-android-oem-snooping}.
 
 Network-level anonymization does not neutralize this exposure, because
 the exposure is at the identity layer rather than the network layer.
@@ -1396,7 +1408,19 @@ vendor-controlled firmware on a separate processor that the
 application-processor operating system -\/- stock or aftermarket -\/-
 does not inspect, and remotely exploitable memory corruption in a
 baseband stack is a demonstrated class of attack
-\citep{weinmann-baseband}. A discrete secure element, where present,
+\citep{weinmann-baseband}. On several Samsung Galaxy models the
+proprietary modem firmware was moreover found to implement a
+remote-file-service protocol capable of reading, writing, and deleting
+files on the application processor\textquotesingle s storage -\/-
+characterized by its finders as a backdoor, though whether it was a
+deliberate backdoor or an incidental feature of the
+modem\textquotesingle s file service is disputed
+\citep{replicant-samsung-backdoor}; analysis of current flagship
+hardware continues to uncover undisclosed baseband command interfaces
+and vendor-confirmed zero-day flaws, including denial of cellular
+service and arbitrary access to the application
+processor\textquotesingle s file system from the baseband
+\citep{li-basemirror}. A discrete secure element, where present,
 likewise runs vendor firmware on its own chip. The trusted execution
 environment should not be conflated with these: on a platform such as
 this one it shares the application processor and is signed and checked
