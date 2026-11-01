@@ -134,11 +134,12 @@ in-system scanner, which it can evade whatever that
 scanner\textquotesingle s privileges (Section 9). Against that class the
 owner typically cannot carry out the standard forensic approach -\/-
 examining the device from a separate, known-clean computer and working
-from an image rather than the live original, as standard forensic
-practice directs \citep{nist-sp800-86} -\/- without first unlocking or
-modifying the device. That modification can itself alter the evidence
-under examination, the mandatory wipe triggered by unlocking the
-bootloader being the extreme case \citep{aosp-bootloader-locking}; and a
+from a write-blocked image rather than the live original, as standard
+forensic practice directs \citep{nist-sp800-101r1},
+\citep{nist-sp800-86} -\/- without first unlocking or modifying the
+device. That modification can itself alter the evidence under
+examination, the mandatory wipe triggered by unlocking the bootloader
+being the extreme case \citep{aosp-bootloader-locking}; and a
 well-constructed backdoor could detect the onset of an investigation and
 erase itself or conceal its traces \citep{chen-anti-virtualization},
 \citep{ruggia-evasive-malware}, \citep{garfinkel-anti-forensics}, as
