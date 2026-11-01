@@ -307,7 +307,7 @@ quotes = [
 [aosp-drm]
 label = "Android DRM framework -- hardware-backed content protection bound to the boot chain of trust"
 claims = [
-  { section = "Sec. 2", text = "Hardware-backed digital-rights-management binds decryption and the decoded video frames to the same hardware chain of trust as verified boot, releasing premium content through a trusted output path on the content provider's terms while withholding the decoded stream from the device owner -- the content-protection objective the paper names and places out of scope." },
+  { section = "Sec. 2", text = "On devices with the requisite hardware support, hardware-backed digital-rights-management can bind decryption and the decoded video frames to the same hardware chain of trust as verified boot, routing protected content through a trusted output path so the owner may play licensed media but cannot directly extract the decoded stream, which is released only on the content provider's terms -- the content-protection objective the paper names and places out of scope." },
 ]
 quotes = [
   { text = "The Android platform provides an extensible DRM framework that lets apps manage rights-protected content according to the license constraints associated with the content.", label = "Rights-protected content on the provider's terms", note = "Android Open Source Project, DRM (Framework section); verified verbatim against the live page." },
