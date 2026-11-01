@@ -390,8 +390,9 @@ mechanisms for what they deny that owner.
 Three bodies of prior work supply the evidence reorganized here. The
 mobile-forensics literature establishes how, and how far, data can be
 acquired from Android devices: official guidance on sound acquisition
-and its preconditions \citep{nist-sp800-101r1}, practitioner treatments
-of imaging and temporary-root techniques \citep{hoog-android-forensics},
+and its preconditions \citep{nist-sp800-101r1}, empirical studies of
+imaging and rooting-based acquisition
+\citep{son-android-data-integrity}, \citep{vidas-android-collection},
 and field reports on the limited traces recoverable from stock devices
 in spyware investigations \citep{amnesty-pegasus-methodology},
 \citep{mvt-android-methodology}. The rootkit-detection literature
@@ -537,7 +538,7 @@ soldered component that cannot be removed without specialized work
 \citep{nist-sp800-101r1}. Second, Android normally blocks access to many
 system files and to the private files of other applications unless the
 device is rooted or unlocked \citep{mayrhofer-android-security-model},
-\citep{hoog-android-forensics}.
+\citep{son-android-data-integrity}.
 
 Reading the storage with a different device is generally impractical for
 routine verification and is often unsuitable in forensic contexts. If
@@ -556,7 +557,8 @@ excluded directories \citep{aosp-auto-backup}. Approaches that would
 copy a full raw disk image to a computer do not work on devices that are
 neither rooted nor rootable, and comprehensive imaging of internal
 storage is generally described in the forensic literature as requiring
-root or an unlocked bootloader \citep{hoog-android-forensics}.
+root or an unlocked bootloader \citep{son-android-data-integrity},
+\citep{vidas-android-collection}.
 
 These limitations are compounded by storage encryption, which is
 effectively universal on recent mainstream devices: file-based
@@ -910,11 +912,12 @@ bootloader cannot be unlocked, researchers may be driven to rely on
 exploitable vulnerabilities to gain privileges temporarily. Forensic
 analyses report that application sandboxing, encryption, and file-based
 access controls pose challenges to data acquisition
-\citep{nist-sp800-101r1}, and that temporary-root techniques, which
-leverage operating-system vulnerabilities to obtain elevated privileges
-without permanently modifying the device, are used to obtain more
-comprehensive access including system-level files
-\citep{hoog-android-forensics}.
+\citep{nist-sp800-101r1}, and that rooting -\/- commonly achieved by
+executing an exploit against an operating-system vulnerability, or by
+booting a custom recovery mode that grants administrative privileges
+while minimizing alteration of stored user data -\/- provides the access
+needed for fuller acquisition \citep{son-android-data-integrity},
+\citep{vidas-android-collection}.
 
 For comparison, non-Android platforms such as desktop and server Linux
 provide suitable options for the same objectives. Anti-malware kernel
@@ -1088,7 +1091,7 @@ A principal objection holds that practical forensic tooling for mobile
 devices already exists and therefore contradicts the claim that stock
 devices resist verification. The Mobile Verification Toolkit (MVT), a
 consensual forensic tool intended to help analyze mobile devices for
-signs of spyware, is the usual example.
+signs of spyware, is the example considered here.
 
 There is, however, no contradiction. Such a tool can identify known
 indicators of compromise using the data that the device exposes, but the
