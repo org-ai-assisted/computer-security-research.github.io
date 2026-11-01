@@ -335,6 +335,7 @@ claims = [
 ]
 quotes = [
   { text = "\"its ability to maintain the integrity of the original data source being acquired and also that of the extracted data. The former is done by blocking or otherwise eliminating write requests to the device containing the data.\"" },
+  { text = "An exact bit-stream copy of all electronic data on a device, performed in a manner that ensures the information is not altered.", label = "Image -- bit-for-bit, not altered", note = "NIST SP 800-101r1 glossary (the write-blocked image worked from in Sec 1)." },
   { text = "\"Level 4 Chip-Off methods involve the physical removal of memory from a mobile device to extract data, requiring extensive training in electronic engineering and file system forensics.\" / \"the risk of causing physical damage to the chip during the extraction process.\"", label = "chip-off" },
 ]
 
