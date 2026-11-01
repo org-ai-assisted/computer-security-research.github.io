@@ -282,8 +282,8 @@ however, exposes no such login account. uid 0 exists as a kernel
 identity held by init and a deliberately shrinking set of system daemons
 \citep{aosp-root-process-isolation}, but a stock production ("user")
 build ships no owner-accessible "su" and refuses to run its debug bridge
-(adbd) as root, so the owner cannot assume that identity at all without
-first modifying the device.
+(adbd) as root \citep{aosp-adb-root}, so the owner cannot assume that
+identity at all without first modifying the device.
 
 Equally important is what this authority does not include on a modern
 hardened device, because the common assumption that root confers total
@@ -1113,8 +1113,8 @@ master key is itself stored on disk, and entering the passphrase at boot
 decrypts not the disk directly but the master key, which in turn
 decrypts the volume. The arrangement allows the passphrase to be changed
 without re-encrypting the entire volume, since only the stored master
-key must be re-wrapped. The difference on a stock device is that
-hardware protection of the key places it beyond the
+key must be re-wrapped \citep{luks-cryptsetup-faq}. The difference on a
+stock device is that hardware protection of the key places it beyond the
 owner\textquotesingle s reach rather than leaving it in a file the owner
 could back up.
 
