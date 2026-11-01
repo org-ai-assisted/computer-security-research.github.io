@@ -867,25 +867,27 @@ quotes = [
 
 # Remaining references: cited but no online exact text retrieved.
 [iso-27043]
-no_quote = "ISO/IEC 27043:2015 -- paywalled ISO standard; no free full text."
+# Scope via a public national-adoption reproduction (iso.org Cloudflare-blocks automated fetch).
+quotes = [{ text = "This includes processes from pre-incident preparation through investigation closure, as well as any general advice and caveats on such processes.", label = "Scope" }]
 
 [hoog-android-forensics]
 no_quote = "Hoog, Android Forensics (Syngress, 2011) -- print book; no online full text."
 
 [bickford-rootkits-smartphones]
-no_quote = "Bickford et al., HotMobile 2010 -- ACM paywalled; no open abstract/PDF retrieved."
+quotes = [{ text = "We use three example rootkits to show that smart phones are just as vulnerable to rootkits as desktop operating systems.", label = "Abstract" }]
 
 [google-play-help]
-no_quote = "Google Play Help -- the cited page is the Play Help hub (a landing page of article links), not a single verbatim operative sentence; the account-required / remote-install-to- linked-device behavior the paper describes is documented across Play Help, not quotable from one page."
+quotes = [{ text = "You can add a Google Account on your device to start downloading and buying items on the Google Play Store app.", label = "Google Play Help" }]
 
 [sguigna-jtag-attack-surface]
-no_quote = "Sguigna, AUTOTESTCON 2019 -- IEEE paywalled; ISBN only, no DOI/open abstract (the JTAG-lock claim is independently backed by [@patent-secure-jtag])."
+# Abstract via OpenAlex + Semantic Scholar mirrors (IEEE Xplore hard-blocks automated fetch).
+quotes = [{ text = "One method used to protect platforms against such attacks is to physically fuse off the JTAG Test Access Ports, either at the integrated circuit or the board level.", label = "Abstract" }]
 
 [breeuwsma-jtag-imaging]
 no_quote = "Breeuwsma, Digital Investigation 2006 -- Elsevier paywalled; no open abstract."
 
 [yang-live-memory-acquisition]
-no_quote = "Yang et al., Digital Investigation 2017 -- Elsevier paywalled; no open abstract."
+quotes = [{ text = "Existing Android main memory forensics techniques are hardly being adopted in practical forensic investigations because they often require solving several usability constraints, such as requiring root privilege escalation, custom kernel replacement, or screen lock bypass.", label = "Abstract" }]
 
 [weinmann-baseband]
 label = "Weinmann, WOOT 2012 -- remotely exploitable memory corruptions in baseband stacks on a separate, less-hardened processor"
