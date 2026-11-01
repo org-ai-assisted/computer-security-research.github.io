@@ -345,10 +345,16 @@ to the device\textquotesingle s own currently running operating system.
 Owner-inspectability is the central property this paper isolates. A
 device is owner-inspectable when its owner can examine and verify the
 whole system -\/- storage, memory, and the boot and operating-system
-state -\/- from a clean, trusted vantage point, and can do so without
-forfeiting the attested status the device reports to the software and
-services it runs -\/- the vendor-approved standing a remote relying
-party, not the owner, relies on.
+state -\/- from a clean, trusted vantage point, and can establish and
+demonstrate what the device is running, both to themselves and to any
+verifier they choose to trust. The criterion is owner-facing: it does
+not require that the device also keep the vendor-approved attested
+status a remote relying party, not the owner, relies on. That
+vendor-approved standing is a property in tension with
+owner-inspectability rather than a part of it -\/- on stock Android the
+two are coupled, so that gaining owner inspection forfeits the
+vendor-approved status, and it is that squeeze, not any inability to
+self-verify, that this paper traces.
 
 The term is deliberately distinct from forensic readiness as defined in
 the digital-forensics literature, which concerns an
@@ -1143,10 +1149,12 @@ A second objection points to aftermarket Android-based operating systems
 -\/- as counterexamples that an owner can install in place of the
 vendor\textquotesingle s build. They do not form a single case, and the
 differences are exactly what the owner-inspectability criterion
-measures. Most such systems are installed with the bootloader left
-unlocked, because the device cannot be re-locked against a key the
-vendor does not recognize, and an unlocked bootloader cuts both ways
-against the owner-inspectability criterion. It restores much of what the
+measures.
+
+Most such systems are installed with the bootloader left unlocked,
+because the device cannot be re-locked against a key the vendor does not
+recognize, and an unlocked bootloader cuts both ways against the
+owner-inspectability criterion. It restores much of what the
 criterion\textquotesingle s first half demands: the owner regains
 privileged, at-rest inspection a stock device withholds -\/- imaging the
 partitions above all, and, on well-supported hardware, booting an
@@ -1162,17 +1170,20 @@ system\textquotesingle s live memory stays out of reach, since live
 acquisition runs in the already-booted kernel, so booting
 one\textquotesingle s own kernel first reboots the device and discards
 the volatile state that soldered memory already places beyond trusted
-external capture (Section 13). What it gives up is the
-criterion\textquotesingle s second half: without a locked chain the boot
-images are no longer cryptographically verified against a hardware root
-of trust on each startup, and although hardware key attestation still
-functions it can now report only an unverified boot state, not certify a
-locked, vendor-approved one, so a tamper of the boot chain between
-inspections is no longer prevented but at best detectable by hand. Such
-an installation therefore satisfies inspection while giving up the
-enforced, attestable verified-boot state -\/- an illustration of the
-squeeze this paper describes, not a counterexample to it. A smaller
-number support re-locking the bootloader after installation
+external capture (Section 13).
+
+What it gives up is the criterion\textquotesingle s second half: without
+a locked chain the boot images are no longer cryptographically verified
+against a hardware root of trust on each startup, and although hardware
+key attestation still functions it can now report only an unverified
+boot state, not certify a locked, vendor-approved one, so a tamper of
+the boot chain between inspections is no longer prevented but at best
+detectable by hand. Such an installation therefore satisfies inspection
+while giving up the enforced, attestable verified-boot state -\/- an
+illustration of the squeeze this paper describes, not a counterexample
+to it.
+
+A smaller number support re-locking the bootloader after installation
 \citep{grapheneos-install-locking}, \citep{grapheneos-setup-wizard}, and
 this is where the owner-inspectability criterion does its sharpest
 discriminating work, because the re-locked chain can be anchored to
@@ -1192,44 +1203,61 @@ control of the boot chain; swapping an official Google image for an
 official GrapheneOS image changes the vendor, not the
 owner\textquotesingle s standing. Even having such a build whitelisted
 for the hardware-backed integrity verdicts would be relying-party
-acceptance, not owner inspection. GrapheneOS is nonetheless the
-furthest-developed case on which to test the thesis, because it adds
-what the stock platform withholds from the owner: owner-accessible
-attestation tooling -\/- the Auditor app, which from a second device
-verifies that the system is the expected, untampered build running on a
-locked bootloader \citep{grapheneos-auditor}, built on the standard
+acceptance, not owner inspection.
+
+GrapheneOS is nonetheless the furthest-developed case on which to test
+the thesis, because it adds what the stock platform withholds from the
+owner: owner-accessible attestation tooling -\/- the Auditor app, which
+verifies, from a second device or on a schedule against an attestation
+server the owner can run themselves \citep{grapheneos-auditor},
+\citep{grapheneos-attestation-server}, that the system is the expected,
+untampered build running on a locked bootloader, built on the standard
 hardware attestation primitive but packaged as a verify-to-yourself
 capability rather than a relying-party one. The configuration that
 actually meets the key-control half is the other anchoring: an owner who
 builds GrapheneOS from source, signs it with keys they generate and
 keep, and re-locks to their own enrolled verified-boot key holds a root
 of trust that is genuinely theirs \citep{grapheneos-build} -\/- though
-the stock Auditor does not recognize that owner key: its attestation
-accepts only official GrapheneOS keys for a self-signed state
+GrapheneOS\textquotesingle s own Auditor app, in its released form, does
+not recognize that owner key: its attestation accepts only official
+GrapheneOS keys for a self-signed state
 \citep{grapheneos-attestation-compat}, so verifying an owner-signed
-build to a second device needs a verifier the owner configures with
-their own key. That owner-signed path is the strongest available
-approximation of an owner-inspectable device, and the right case on
-which to test the thesis.
+build needs a verifier the owner configures with their own key -\/- an
+owner-built Auditor and, if remote checking is wanted, an owner-run
+attestation server. That owner-signed path is the configuration that
+actually satisfies the owner-inspectability criterion for the main
+system -\/- the owner both holds the root of trust and can verify the
+device against it, to themselves or to any verifier they provision -\/-
+and is the right case on which to test the thesis.
 
-Even there the limitations are relocated, not dissolved. The
-owner-signed configuration delivers verified boot under the
-owner\textquotesingle s own key, but it steps outside any
-pre-established attestation relationship, so the "prove it to a
-skeptical third party" goal is met only against verifiers the owner has
-personally provisioned -\/- one configured with the
-owner\textquotesingle s own key, or an application developer who has
-chosen to accept it. Decisively for everyday use, neither the
-owner-signed build nor the official GrapheneOS build is a
-Google-certified configuration, so neither obtains the device-integrity
-or strong attestation verdicts that mainstream applications increasingly
-demand \citep{play-integrity-improvements},
-\citep{owasp-mastg-play-integrity}: the same owner-controlled posture
-that makes the device inspectable makes a growing set of applications
-refuse to run on it, and GrapheneOS\textquotesingle s stated position is
-that it will not spoof or otherwise circumvent these checks to
-impersonate a stock device \citep{grapheneos-usage}. Other
-owner-controlled systems take the opposite tack: the microG-based
+Even there one limitation is relocated rather than dissolved, and it is
+worth naming precisely. The owner-signed configuration delivers verified
+boot under the owner\textquotesingle s own key and an attestation the
+owner can check -\/- to themselves, or to any verifier willing to adopt
+that key as a trust anchor -\/- so for the owner\textquotesingle s own
+purposes, establishing and demonstrating what the device runs, both
+halves of the criterion are met. What it cannot do is prove itself to a
+verifier that refuses in advance to trust the owner\textquotesingle s
+key: hardware attestation still demonstrates genuine hardware in a
+locked, self-signed boot state to anyone who checks, but a skeptic has
+no published, independent anchor for the owner\textquotesingle s
+verified-boot key, so the gap is the absence of a trust anchor, not the
+unavailability of the key -\/- publishing the key would not close it. An
+official GrapheneOS key differs only in that a relying party can choose
+to trust GrapheneOS, a public project with a reproducible build, as that
+anchor; a self-generated key vouches for no one but its owner.
+Decisively for everyday use, neither the owner-signed build nor the
+official GrapheneOS build is a Google-certified configuration, so
+neither obtains the device-integrity or strong attestation verdicts that
+mainstream applications increasingly demand
+\citep{play-integrity-improvements}, \citep{owasp-mastg-play-integrity}:
+the same owner-controlled posture that makes the device inspectable
+makes a growing set of applications refuse to run on it, and
+GrapheneOS\textquotesingle s stated position is that it will not spoof
+or otherwise circumvent these checks to impersonate a stock device
+\citep{grapheneos-usage}.
+
+Other owner-controlled systems take the opposite tack: the microG-based
 distributions CalyxOS and /e/OS bundle a reimplementation of Google Play
 Services that depends on signature spoofing to impersonate those
 services to the apps that call them \citep{microg-gmscore},
@@ -1257,6 +1285,7 @@ yields only to a leaked attestation keybox, and those are not durable,
 publicly shared keys being banned by Google as they surface
 \citep{playintegrityfork}, \citep{tricky-store}; it is the steadily
 losing arms race Section 13 describes \citep{nguyen-vu-android-rooting}.
+
 Aftermarket operating systems thus confirm rather than refute the
 paper\textquotesingle s thesis: owner-inspectability is attainable, but
 only by leaving the as-sold, vendor-keyed configuration behind, after
