@@ -324,6 +324,27 @@ quotes = [
   { text = "on some phones, dialer keypresses and SMS text are being written to system logs by layer 4 code.", label = "Keypresses/SMS to logs", note = "EFF Deeplinks, Dec 2011; NGO technical analysis -- covert diagnostic logging, not a full-content exfiltration channel." },
 ]
 
+[avcomparatives-mobile-2024]
+label = "AV-Comparatives Mobile Security Review 2024 -- independent measurement of Play Protect (May 2024)"
+claims = [
+  { section = "Sec. 2", text = "Independent testing, not the vendor, measures app-layer malware screening: in the May 2024 AV-Comparatives round Google Play Protect reached a 99.3% protection rate, clearing the 99% certification threshold but trailing the leading third-party scanners (99.9%) and logging more false positives (10 vs 0)." },
+]
+quotes = [
+  { text = "To be certified, apps had to have a malware protection rate of at least 99%, not more than 10 FPs, and a battery drain impact of under 8%.", label = "Certification threshold", note = "AV-Comparatives Mobile Security Review 2024 (test period May 2024). Mobile Protection Rates table: Google 99.3% / 10 FPs; Avast, AVG, Bitdefender, Kaspersky 99.9% / 0; Securion 99.1% / 1. Figures and quotes verified verbatim against the report PDF." },
+  { text = "Malware protection by Google Play Protect is getting better each year.", label = "Recent improvement acknowledged" },
+  { text = "During this year's testing, we discovered a bug in Play Protect that occasionally caused cloud requests to fail, preventing Play Protect from blocking the installation of some malicious apps.", label = "Product bug caused misses this round" },
+]
+
+[avtest-android-endurance-2018]
+label = "AV-TEST endurance test -- Play Protect dead last historically (Nov 2017-Mar 2018)"
+claims = [
+  { section = "Sec. 2", text = "Earlier independent rounds rated Play Protect dead last, at well below 70% detection, against third-party scanners near 99%." },
+]
+quotes = [
+  { text = "Google Play Protect comes in dead last with 56.8 and 61.5 percent detection.", label = "Dead last, 56.8/61.5%", note = "AV-TEST, 16 Android Security Apps vs. Google Play Protect in an Endurance Test; endurance test November 2017 to March 2018. Verified verbatim." },
+  { text = "Last place finisher is Google Play Protect with a total of only 6 points.", label = "Last place overall" },
+]
+
 [aosp-drm]
 label = "Android DRM framework -- hardware-backed content protection bound to the boot chain of trust"
 claims = [
