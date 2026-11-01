@@ -6,7 +6,7 @@ Vendor-locked devices, most prominently stock Android phones with a locked bootl
 
 ## 1. Introduction
 
-On a vendor-locked device the owner is, in practice, obliged to trust the platform operator and device vendor -- on a stock Android phone, Google and the manufacturer -- for both application delivery and system updates, because the device cannot be fully examined from the outside while it remains locked down. If that trust relationship is abused -- through compromise of the delivery infrastructure, coercion of an operator, or a malicious insider -- targeted malicious installations or updates may be difficult to detect, independently verify, or prove to a third party.
+On a vendor-locked device the owner is, in practice, obliged to trust the platform operator and device vendor -- on a stock Android phone, Google and the manufacturer -- for both application delivery [@google-play-help] and system updates [@aosp-sepolicy-gmscore], because the device cannot be fully examined from the outside while it remains locked down. If that trust relationship is abused -- through compromise of the delivery infrastructure, coercion of an operator, or a malicious insider -- targeted malicious installations or updates may be difficult to detect, independently verify, or prove to a third party.
 
 The same constraints bear on ordinary malware investigation. When a device is suspected of infection, the owner typically cannot perform a thorough inspection from a separate, known-clean computer without first unlocking or modifying the device. That modification can alter the evidence under examination, and a well-constructed backdoor could detect the onset of an investigation and erase itself or conceal its traces.
 
