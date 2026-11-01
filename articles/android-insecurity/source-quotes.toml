@@ -233,6 +233,7 @@ quotes = [
   { text = "Analysts should examine copies of files, not the original files.", label = "Examine copies, not originals", note = "NIST SP 800-86, Guide to Integrating Forensic Techniques into Incident Response." },
   { text = "The analyst can then use the working copy without affecting the original files or the master copy.", label = "Work from a copy" },
   { text = "Data integrity verification typically consists of using tools to compute the message digest of the original and copied data, then comparing the digests to make sure that they are the same.", label = "Hash-verify for third-party proof" },
+  { text = "The use of such tools can support consistency in the examination process and the accuracy and reproducibility of results.", label = "Reproducibility of the analysis, not proof of cleanliness" },
 ]
 
 [aosp-open-source]
