@@ -198,6 +198,16 @@ quotes = [
   { text = "our tracking spreadsheet for publicly known cases of detected zero-day exploits, in the hope that this can be a useful community resource", label = "The in-the-wild record", note = "Google Project Zero, 0day In the Wild." },
 ]
 
+[projectzero-badbinder]
+label = "Project Zero -- CVE-2019-2215 Binder use-after-free: in-the-wild kernel LPE on a running signed kernel (Pegasus chain)"
+claims = [
+  { section = "Sec. 8", text = "A use-after-free in the Android kernel's Binder driver (CVE-2019-2215) gave a runtime, in-memory local privilege escalation to full compromise of an already-booted device, exploited in the wild in a Pegasus attack chain -- a compromise of the signed, running kernel that boot-time verification does not catch." },
+]
+quotes = [
+  { text = "On October 3, 2019, we disclosed issue 1942 (CVE-2019-2215), which is a use-after-free in Binder in the Android kernel. The bug is a local privilege escalation vulnerability that allows for a full compromise of a vulnerable device.", label = "Kernel UAF -> full runtime compromise", note = "Google Project Zero, Bad Binder; verified verbatim." },
+  { text = "Google's Threat Analysis Group (TAG), Android Security, and Project Zero team received information suggesting that NSO had a 0-day exploit for Android that was part of an attack chain that installed Pegasus spyware on target devices.", label = "Exploited in the wild (Pegasus chain)" },
+]
+
 [talos-predator]
 label = "Cisco Talos -- Predator defeats in-OS confinement at runtime"
 quotes = [
