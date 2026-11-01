@@ -70,7 +70,7 @@ The owner-inspectability criterion relates to, but is distinct from, organizatio
 
 ## 5. Independent Verification Limits
 
-On most stock devices it is difficult to independently verify the state of the whole system. When malware, a hidden backdoor, or tampering is suspected, the owner generally cannot examine the system from a clean, trusted environment without first modifying the device. The owner is therefore left to trust the vendor-controlled software and services that deliver applications and updates, even though those channels could themselves be abused in a targeted manner.
+On most stock devices it is difficult to independently verify the state of the whole system. When malware, a hidden backdoor, or tampering is suspected, the owner generally cannot examine the system from a clean, trusted environment without first modifying the device. The owner is therefore left to trust the vendor-controlled software and services that deliver applications and updates, even though those channels could themselves be abused in a targeted manner (Section 6).
 
 The underlying cause is architectural. Android is commonly shipped as a locked-down general-purpose computer in which administrative capability is deliberately withheld from the owner and the bootloader is locked. Many protections and integrity checks are implemented under vendor control, limiting what the owner can change, inspect, or replace. As a result the owner is typically prevented from inspecting the whole system and from producing a complete device backup without first bypassing these restrictions.
 
