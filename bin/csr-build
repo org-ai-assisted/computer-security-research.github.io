@@ -86,11 +86,15 @@ fi
 rsync --archive --delete -- "${staging}/" "${content_dir}/_site/"
 printf '%s\n' "csr-build: built and mirrored into _site."
 
-## Run the SAME static-consistency gate the Pages deploy runs (dist-ai
-## check_site), against the mirrored _site, so a wording/link/consistency
-## failure is caught HERE -- before commit+push -- instead of failing the
-## deploy after merge and leaving the live site stale. Fails closed via
-## errexit; runs in BOTH modes so --no-commit is a full pre-merge check.
+## Run the dist-ai check_site gate the Pages deploy also runs, here against
+## the mirrored _site, so a wording/link/consistency failure is caught HERE --
+## before commit+push -- instead of failing the deploy after merge and leaving
+## the live site stale. Best-effort EARLY mirror of the deploy gate: it uses
+## the LOCAL dist-ai checkout, which tracks master as the deploy's checkout
+## does (we branch-track dist-ai, not pin it), so a local checkout left on a
+## divergent branch could differ from the deployed revision; the deploy's run
+## stays authoritative. Fails closed via errexit; runs in BOTH modes so
+## --no-commit is a pre-merge check.
 printf '%s\n' "csr-build: running check_site gate ..."
 "${check_site}" "${content_dir}/_site"
 printf '%s\n' "csr-build: check_site gate clean."
