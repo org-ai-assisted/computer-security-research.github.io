@@ -350,7 +350,7 @@ quotes = [
 [avtest-android-endurance-2018]
 label = "AV-TEST endurance test -- Play Protect dead last historically (Nov 2017-Mar 2018)"
 claims = [
-  { section = "Sec. 2", text = "Earlier independent rounds rated Play Protect dead last, at well below 70% detection, against third-party scanners near 99%." },
+  { section = "Sec. 2", text = "Earlier independent rounds rated Play Protect dead last, at well below 70% detection." },
 ]
 quotes = [
   { text = "Google Play Protect comes in dead last with 56.8 and 61.5 percent detection.", label = "Dead last, 56.8/61.5%", note = "AV-TEST, 16 Android Security Apps vs. Google Play Protect in an Endurance Test; endurance test November 2017 to March 2018. Verified verbatim." },
@@ -1184,7 +1184,7 @@ quotes = [
 [replicant-samsung-backdoor]
 label = "Samsung modem back-door -- proprietary modem firmware with file I/O into AP storage (intent disputed)"
 claims = [
-  { section = "Sec. 12", text = "On several Samsung Galaxy models the proprietary modem firmware implements a protocol capable of reading, writing, and deleting files on the application processor's storage; its finders called it a backdoor, while whether the capability was deliberate or an incidental modem file-service feature is disputed." },
+  { section = "Sec. 12", text = "On several Samsung Galaxy models the proprietary radio-interface-layer software on the application processor (the vendor library that mediates the modem) implements a protocol through which the modem can read, write, and delete files on that storage; its finders called it a backdoor, while whether the capability was deliberate rather than an incidental modem file-service feature is not established." },
 ]
 quotes = [
   { text = "actually implements a backdoor that lets the modem perform remote file I/O operations on the file system.", label = "Finders' characterization as a backdoor", note = "Kocialkowski, FSF/Replicant writeup; the 'backdoor' label is the finders' own, and the intent reading was contested." },
@@ -1201,20 +1201,19 @@ quotes = [
   { text = "The authorisation of the rightholder shall not be required where reproduction of the code and translation of its form within the meaning of points (a) and (b) of Article 4(1) are indispensable to obtain the information necessary to achieve the interoperability of an independently created computer program with other programs", label = "Art. 6(1) -- decompilation for interoperability", note = "Directive 2009/24/EC (codified; same right as Art. 6 of the 1991 directive 91/250/EEC the Replicant disclaimer names). Verified verbatim via rendered EUR-Lex; UK spelling preserved." },
 ]
 
-[dmca-1201-exemptions-2024]
-label = "DMCA 1201 -- triennial good-faith-security-research and consumer-device-repair exemptions"
+[dmca-1201f]
+label = "DMCA 17 USC 1201(f) -- permanent reverse-engineering-for-interoperability exemption"
 claims = [
-  { section = "Sec. 12", text = "In the US, circumvention of access controls is prohibited by 17 USC 1201; comparable reverse-engineering and repair work depends on periodic, narrowly drawn triennial exemptions for good-faith security research and for consumer-device repair, codified at 37 CFR 201.40." },
+  { section = "Sec. 12", text = "US law has a permanent (non-triennial) exemption permitting circumvention to reverse-engineer a lawfully obtained program for interoperability -- the US parallel to Article 6 of the EU Computer Programs Directive." },
 ]
 quotes = [
-  { text = "good-faith security research means accessing a computer program solely for purposes of good-faith testing, investigation, and/or correction of a security flaw or vulnerability", label = "Security-research exemption, 37 CFR 201.40(b)(18)", note = "US Copyright Office final rule, 89 Fed. Reg. 85437 (Oct. 28, 2024); verified verbatim via the govinfo PDF." },
-  { text = "devices designed primarily for use by consumers, when circumvention is a necessary step to allow the diagnosis, maintenance, or repair of such a device, and is not accomplished for the purpose of gaining access to other copyrighted works", label = "Consumer-device repair exemption" },
+  { text = "a person who has lawfully obtained the right to use a copy of a computer program may circumvent a technological measure that effectively controls access to a particular portion of that program for the sole purpose of identifying and analyzing those elements of the program", label = "17 USC 1201(f)(1) -- RE for interoperability", note = "US Copyright Office, Title 17 Chapter 12; verified verbatim via copyright.gov." },
 ]
 
 [replicant-samsung-backdoor-wiki]
-label = "Replicant wiki -- RE of proprietary modem binary + legal disclaimer (EU art. 6 interoperability defense)"
+label = "Replicant wiki -- RE of proprietary vendor RIL library + legal disclaimer (EU art. 6 interoperability defense)"
 claims = [
-  { section = "Sec. 12", text = "The Samsung modem backdoor was found by reverse-engineering the proprietary modem binary; the finders published a legal disclaimer resting the lawfulness of their decompilation on the EU Computer Programs Directive's interoperability exception." },
+  { section = "Sec. 12", text = "The Samsung finding was obtained by reverse-engineering the proprietary vendor radio-interface-layer library (application-processor software, not modem firmware); the finders published a legal disclaimer resting the lawfulness of their decompilation on the EU Computer Programs Directive's interoperability exception." },
 ]
 quotes = [
   { text = "The developers involved in the present analysis did not ever agree to any sort of End User License Agreement that explicitly prohibited the reverse engineering and decompiling operations of the incriminated binary.", label = "No EULA barred the RE", note = "Replicant wiki, Samsung Galaxy Back-door. Live redmine page is bot-gated (Anubis); text verified verbatim against the Internet Archive Wayback snapshot (2014)." },
