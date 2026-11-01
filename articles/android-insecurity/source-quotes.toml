@@ -129,6 +129,15 @@ quotes = [
   { text = "\"The Auditor app uses hardware-based security features to validate the identity of a device, along with the authenticity and integrity of the operating system. It ensures the device is running a verified operating system with a locked bootloader and that no tampering has occurred.\" / \"Any device with Android 13 or higher can run the Auditor app and use it to verify other devices. However, only devices launched with Android 8.0 or later have the necessary hardware support for being verified.\"" },
 ]
 
+[grapheneos-attestation-server]
+label = "Owner can self-host the attestation server"
+claims = [
+  { section = "Sec. 12", text = "The attestation server is open source, so an owner can run their own instance for remote verification rather than rely on the public service." },
+]
+quotes = [
+  { text = "This is a generic guide on setting up the attestation server.", label = "Self-hostable", note = "AttestationServer README; the server is open source (MIT-licensed), so an owner can run their own instance instead of the public attestation.app service." },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
