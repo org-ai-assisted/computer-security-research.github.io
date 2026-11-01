@@ -769,7 +769,9 @@ malicious code shipped inside the certified image as pre-installed
 vendor software, as the Triada family was built into
 manufacturers\textquotesingle{} system images during production
 \citep{google-triada}, or a runtime, memory-resident compromise of the
-already-booted and legitimately signed kernel.
+already-booted and legitimately signed kernel, such as the in-the-wild
+Binder use-after-free in the Android kernel that escalated to full
+device compromise \citep{projectzero-badbinder}.
 
 These runtime compromises are documented, not hypothetical: commercial
 surveillance vendors sell turnkey exploit chains that defeat current,
