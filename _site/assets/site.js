@@ -36,7 +36,12 @@
     var rid = href.slice(1);
     var ref = document.getElementById(rid);
     if (!ref) { continue; }
-    cites[j].setAttribute("title", ref.textContent.replace(/\s+/g, " ").trim());
+    // Native tooltip = the reference text WITHOUT the inlined .csl-quote (the
+    // quote is shown in the hovercard; repeating it in the title is noise).
+    var titleSrc = ref.cloneNode(true);
+    var cq = titleSrc.querySelector(".csl-quote");
+    if (cq && cq.parentNode) { cq.parentNode.removeChild(cq); }
+    cites[j].setAttribute("title", titleSrc.textContent.replace(/\s+/g, " ").trim());
     if (!seen[rid]) { seen[rid] = true; refOrder.push(rid); }
   }
   if (refOrder.length) {
@@ -64,11 +69,13 @@
     var hideTimer = null, curIdx = -1, curAnchor = null, pinned = false, moved = false;
     function refFragment(id) {
       var frag = document.createDocumentFragment();
-      // Prefer the verbatim source-quote block when one is embedded for this key
-      // (id is "ref-<key>"); fall back to the reference-list entry otherwise.
-      var key = id.indexOf("ref-") === 0 ? id.slice(4) : id;
-      var r = document.getElementById("cq-" + key) || document.getElementById(id);
-      if (!r) { return frag; }
+      // id is "ref-<key>". Prefer the verbatim source-quote block inlined in the
+      // reference entry (.csl-quote) -- a single source of the quote, shared with
+      // the reference area (no duplicate hidden store); fall back to the whole
+      // reference entry when the key has no quote.
+      var ref = document.getElementById(id);
+      if (!ref) { return frag; }
+      var r = ref.querySelector(".csl-quote") || ref;
       var kids = r.childNodes;
       for (var i = 0; i < kids.length; i++) {
         frag.appendChild(kids[i].cloneNode(true));
@@ -131,6 +138,9 @@
     }
     card.addEventListener("mouseenter", cancelHide);
     card.addEventListener("mouseleave", hideSoon);
+    // A pointer press anywhere inside the card pins it, so selecting text on touch
+    // (no hover there) is not cut short by the blur/hideSoon closing the card.
+    card.addEventListener("pointerdown", function () { pinned = true; cancelHide(); });
     cprev.addEventListener("click", function () { step(-1); });
     cnext.addEventListener("click", function () { step(1); });
     // Drag the card by its nav bar to reposition it (pointer); dragging pins it so
