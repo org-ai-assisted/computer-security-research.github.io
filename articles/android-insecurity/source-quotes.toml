@@ -865,12 +865,25 @@ quotes = [
   { text = "\"If this attribute is set to \\\"false\\\", no backup or restore of the application is ever performed, disabling all cloud backups and device-to-device (D2D) transfers, even by a full-system backup that otherwise causes all application data to save using adb. The default value of this attribute is \\\"true\\\".\"" },
 ]
 
-# Remaining references: cited but no online exact text retrieved.
 [iso-27043]
 quotes = [{ text = "This includes processes from pre-incident preparation through investigation closure, as well as any general advice and caveats on such processes.", label = "Scope", note = "Scope text retrieved from a public national-adoption reproduction; iso.org Cloudflare-blocks automated fetch." }]
 
-[hoog-android-forensics]
-no_quote = "Hoog, Android Forensics (Syngress, 2011) -- print book; the Internet Archive copy is lending-restricted (full-text OCR gated), so no verbatim text is retrievable without borrowing."
+[son-android-data-integrity]
+label = "Android acquisition -- imaging requires root; recovery-mode privilege minimizes data alteration"
+quotes = [
+  { text = "For data partition imaging that includes user data or for file/folder copying, the device must first be \"rooted\", that is, administrative privilege must be gained.", label = "Imaging requires root", note = "DFRWS 2013 open-access proceedings PDF (dfrws.org)." },
+  { text = "If an Android device supports bootloader lock/unlock state, bootloader has to be unlocked before flashing the CRMI.", label = "Unlocked bootloader" },
+  { text = "In order to acquire data, the device must be rooted. This is normally achieved by executing an exploit that has been independently developed.", label = "Rooting via exploit" },
+  { text = "When Android Recovery Mode is used, administrator privileges can be granted while the device is in a state where the alteration to user data can be minimized.", label = "Recovery-mode privilege, minimized alteration" },
+]
+
+[vidas-android-collection]
+label = "Android collection methodology -- rooting exploits a vulnerability and undermines the security model"
+quotes = [
+  { text = "Rooting a device typically involves exploiting a security vulnerability (which is typically device and software version dependent) with the intention of installing unsupported software on the device.", label = "Rooting via exploit", note = "DFRWS 2011 open-access proceedings PDF (authors' CMU page)." },
+  { text = "Rooting a device undermines Android's security model. A rooted device often permits easy escalation of privilege.", label = "Undermines security model" },
+  { text = "Such a collection would strictly contain less information due to the inaccessibility of unallocated storage locations and permissions enforced by the running Android system (the adb process does not execute with root privileges).", label = "Unprivileged collection gets less" },
+]
 
 [bickford-rootkits-smartphones]
 quotes = [{ text = "We use three example rootkits to show that smart phones are just as vulnerable to rootkits as desktop operating systems.", label = "Abstract" }]
