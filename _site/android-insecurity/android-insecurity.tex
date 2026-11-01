@@ -779,14 +779,15 @@ fully patched devices, and Google\textquotesingle s Threat Analysis
 Group attributes about half of known zero-day exploits against Google
 and Android targets to such vendors \citep{tag-buying-spying}, in one
 case observing a full chain fired against an up-to-date Samsung phone
-running the latest Chrome \citep{tag-cytrox}; Project Zero maintains the
-running in-the-wild record \citep{projectzero-itw}. Once resident, such
-an implant operates inside the running system\textquotesingle s own
-trust boundaries -\/- the Predator spyware\textquotesingle s loader
-injects into zygote to assume other application identities and move
-between SELinux domains \citep{talos-predator} -\/- so the application
-sandbox and SELinux confinement of Section 2 restrain it far less than
-they restrain ordinary software.
+running the latest Chrome \citep{tag-cytrox},
+\citep{citizenlab-forcedentry}; Project Zero maintains the running
+in-the-wild record \citep{projectzero-itw}. Once resident, such an
+implant operates inside the running system\textquotesingle s own trust
+boundaries -\/- the Predator spyware\textquotesingle s loader injects
+into zygote to assume other application identities and move between
+SELinux domains \citep{talos-predator} -\/- so the application sandbox
+and SELinux confinement of Section 2 restrain it far less than they
+restrain ordinary software.
 
 A persistent rootkit that instead rewrites the verified boot or system
 partitions is the one case verified boot and dm-verity are built to
@@ -830,11 +831,12 @@ needed for independent verification \\
 
 From the platform\textquotesingle s standpoint this is a security
 feature: it raises assurance that a device presenting itself to a
-service is in a known, unmodified state. From the standpoint of an owner
-facing a high-threat situation, the same mechanism is a verification
-dead-end, because the only configurations in which the device is
-considered trustworthy by the applications and services that demand it
-are precisely those in which the owner cannot examine it.
+service is in a known, unmodified state \citep{play-integrity-verdicts}.
+From the standpoint of an owner facing a high-threat situation, the same
+mechanism is a verification dead-end, because the only configurations in
+which the device is considered trustworthy by the applications and
+services that demand it are precisely those in which the owner cannot
+examine it.
 
 The dependency has, moreover, tightened over time, and now reaches
 beyond the owner\textquotesingle s own verification into everyday use of
