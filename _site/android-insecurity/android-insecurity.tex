@@ -242,35 +242,51 @@ behalf -\/- while leaving the adversary\textquotesingle s open.
 
 It is natural to read these mechanisms as existing primarily for the
 owner\textquotesingle s protection; that is only half the picture. The
-platform does keep unauthorized third-party software off the device -\/-
-Google Play Protect scans apps and works to prevent the installation of
-harmful ones, and installing from unknown sources is restricted by
-default \citep{google-play-protect}, \citep{nistSP800124r2} -\/- but the
-signed-image and attestation machinery also enforces objectives the
-owner may neither share nor be able to remove or audit -\/- that only a
-vendor-approved configuration runs, with application and service access
-gated by relying parties (the remote apps and services that consume the
-attestation verdict) rather than by the owner
-\citep{play-integrity-verdicts} -\/- so the guarantee runs in part to
-the platform and those relying parties, not to the owner alone. Such
-owner-adverse, non-removable functionality is what the free-software
-community terms an anti-feature \citep{hill2007antifeatures},
-\citep{fdroid-antifeatures}; preinstalled bloatware, adware, and
-tracking software that the owner cannot uninstall without root is a
-documented instance \citep{gamba2020preinstalled}; Carrier IQ,
-preinstalled carrier diagnostic software that wrote dialer keypresses
-and SMS text to system logs on some devices, is an earlier one
-\citep{eckersley-carrieriq}. Content protection is the platform-control
-counterpart on the content side: on devices with the requisite hardware
-support, hardware-backed digital-rights-management can bind decryption
-and the decoded video frames to the same hardware chain of trust as
-verified boot, routing protected content through a trusted output path
-so that the owner may play licensed media but cannot directly extract
-the decoded stream, which is released only on terms the content provider
-sets \citep{aosp-drm}. This paper treats those platform-control and
-content-protection objectives as out of scope to analyze (Section 3) and
-returns to the question of whom the attestation guarantee actually
-serves (Section 8).
+platform does work to keep unauthorized and malicious software off the
+device, through a layered apparatus that is effective only to a degree
+and reaches no further than the surface each layer covers: verified boot
+and a locked bootloader admit only vendor-signed code to the boot and
+system partitions, keeping unauthorized code out of the system image
+though not out of the application layer \citep{aosp-verified-boot},
+\citep{aosp-bootloader-locking} (a chain that has itself demonstrated
+sub-operating-system defeats; Sections 8 and 12); Google Play Protect
+screens apps and works to prevent the installation of harmful ones, with
+installation from unknown sources restricted by default
+\citep{google-play-protect}, \citep{nistSP800124r2}; and the Play
+Integrity API gates relying-party access when a device appears tampered
+\citep{play-integrity-verdicts}. How well the app-layer screen actually
+catches malware is settled by independent testing rather than by vendor
+claim: in the most recent such measurement Play Protect reached a 99.3
+percent protection rate, clearing the 99 percent certification threshold
+but trailing the leading third-party scanners at 99.9 percent and
+logging more false positives, an improvement over earlier independent
+rounds that had rated it dead last at well below 70 percent detection
+\citep{avcomparatives-mobile-2024},
+\citep{avtest-android-endurance-2018}. But the signed-image and
+attestation machinery also enforces objectives the owner may neither
+share nor be able to remove or audit -\/- that only a vendor-approved
+configuration runs, with application and service access gated by relying
+parties (the remote apps and services that consume the attestation
+verdict) rather than by the owner \citep{play-integrity-verdicts} -\/-
+so the guarantee runs in part to the platform and those relying parties,
+not to the owner alone. Such owner-adverse, non-removable functionality
+is what the free-software community terms an anti-feature
+\citep{hill2007antifeatures}, \citep{fdroid-antifeatures}; preinstalled
+bloatware, adware, and tracking software that the owner cannot uninstall
+without root is a documented instance \citep{gamba2020preinstalled};
+Carrier IQ, preinstalled carrier diagnostic software that wrote dialer
+keypresses and SMS text to system logs on some devices, is an earlier
+one \citep{eckersley-carrieriq}. Content protection is the
+platform-control counterpart on the content side: on devices with the
+requisite hardware support, hardware-backed digital-rights-management
+can bind decryption and the decoded video frames to the same hardware
+chain of trust as verified boot, routing protected content through a
+trusted output path so that the owner may play licensed media but cannot
+directly extract the decoded stream, which is released only on terms the
+content provider sets \citep{aosp-drm}. This paper treats those
+platform-control and content-protection objectives as out of scope to
+analyze (Section 3) and returns to the question of whom the attestation
+guarantee actually serves (Section 8).
 
 \subsection{3. Threat Model and Scope}\label{threat-model-and-scope}
 
