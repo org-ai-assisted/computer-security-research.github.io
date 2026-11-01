@@ -35,6 +35,7 @@ content_dir="$(dirname -- "${script_dir}")"
 journal_maker="${CSR_JOURNAL_MAKER:-$(dirname -- "${content_dir}")/journal-maker}"
 dist_ai="${CSR_DIST_AI:-$(dirname -- "${content_dir}")/dist-ai}"
 check_site="${dist_ai}/usr/share/website-tests/check_site.py"
+check_svg_safety="${dist_ai}/usr/share/website-tests/check_svg_safety.py"
 
 do_commit=1
 if [ "${1:-}" = "--no-commit" ]; then
@@ -54,6 +55,10 @@ if [ ! -x "${journal_maker}/usr/bin/journal-maker" ]; then
 fi
 if [ ! -x "${check_site}" ]; then
    printf '%s\n' "csr-build: dist-ai check_site not found at ${check_site} (set CSR_DIST_AI)" >&2
+   exit 1
+fi
+if [ ! -x "${check_svg_safety}" ]; then
+   printf '%s\n' "csr-build: dist-ai check_svg_safety not found at ${check_svg_safety} (set CSR_DIST_AI)" >&2
    exit 1
 fi
 
@@ -97,7 +102,11 @@ printf '%s\n' "csr-build: built and mirrored into _site."
 ## --no-commit is a pre-merge check.
 printf '%s\n' "csr-build: running check_site gate ..."
 "${check_site}" "${content_dir}/_site"
-printf '%s\n' "csr-build: check_site gate clean."
+## The Pages deploy runs a SECOND gate after check_site -- active-content SVG
+## safety (stored-XSS on the header-less Pages origin). Run it here too, so a
+## blocked SVG fails locally rather than failing the deploy post-merge.
+"${check_svg_safety}" "${content_dir}/_site"
+printf '%s\n' "csr-build: check_site + check_svg_safety gates clean."
 
 if [ "${do_commit}" -eq 0 ]; then
    printf '%s\n' "csr-build: --no-commit; leaving _site uncommitted."
