@@ -243,16 +243,22 @@ behalf -\/- while leaving the adversary\textquotesingle s open.
 It is natural to read these mechanisms as existing primarily for the
 owner\textquotesingle s protection; that is only half the picture. They
 do keep unauthorized third-party software off the device
-\citep{google-play-protect}, but the same signed-image and attestation
-machinery also enforces objectives the owner may neither share nor be
-able to remove or audit -\/- that only a vendor-approved configuration
-runs, with application and service access gated by relying parties (the
-remote apps and services that consume the attestation verdict) rather
-than by the owner \citep{play-integrity-verdicts} -\/- so the guarantee
-runs in part to the platform and those relying parties, not to the owner
-alone. This paper treats those platform-control and content-protection
-objectives as out of scope to analyze (Section 3) and returns, for
-attestation, to whom that guarantee actually runs (Section 8).
+\citep{google-play-protect}, \citep{nistSP800124r2}, but the same
+signed-image and attestation machinery also enforces objectives the
+owner may neither share nor be able to remove or audit -\/- that only a
+vendor-approved configuration runs, with application and service access
+gated by relying parties (the remote apps and services that consume the
+attestation verdict) rather than by the owner
+\citep{play-integrity-verdicts} -\/- so the guarantee runs in part to
+the platform and those relying parties, not to the owner alone. Such
+owner-adverse, non-removable functionality is what the free-software
+community terms an anti-feature \citep{hill2007antifeatures},
+\citep{fdroid-antifeatures}; preinstalled bloatware, adware, and
+tracking software that the owner cannot uninstall without root is a
+documented instance \citep{gamba2020preinstalled}. This paper treats
+those platform-control and content-protection objectives as out of scope
+to analyze (Section 3) and returns, for attestation, to whom that
+guarantee actually runs (Section 8).
 
 \subsection{3. Threat Model and Scope}\label{threat-model-and-scope}
 
@@ -268,15 +274,18 @@ skeptical third party could check.
 Three practical capabilities are treated as the goals of interest:
 inspecting the device deeply for malware and backdoors; proving the
 result to a skeptical third party; and creating complete device backups
-suitable for independent verification. Proving the result to a skeptical
-third party is, on a general-purpose computer, the routine of forensic
-soundness: the examiner makes a write-blocked, bit-for-bit image of the
-storage and computes a cryptographic hash of it, so that any independent
-examiner can confirm the image is byte-identical to the original, re-run
-the analysis on the same verified bits, and reach the same result
-\citep{nist-sp800-86}, \citep{rfc3227}. The proof is the published hash
-and a reproducible procedure, which the owner holds and can hand to any
-skeptic; it does not require the skeptic to trust the examiner.
+-\/- a bit-for-bit image of the whole device, all partitions and user
+data, not the platform\textquotesingle s limited app-level backup -\/-
+suitable for independent verification \citep{nist-sp800-101r1}. Proving
+the result to a skeptical third party is, on a general-purpose computer,
+the routine of forensic soundness: the examiner makes a write-blocked,
+bit-for-bit image of the storage and computes a cryptographic hash of
+it, so that any independent examiner can confirm the image is
+byte-identical to the original, re-run the analysis on the same verified
+bits, and reach the same result \citep{nist-sp800-86}, \citep{rfc3227}.
+The proof is the published hash and a reproducible procedure, which the
+owner holds and can hand to any skeptic; it does not require the skeptic
+to trust the examiner.
 
 Explicitly out of scope are digital-rights-management objectives and
 platform-control goals -\/- that is, the platform\textquotesingle s
