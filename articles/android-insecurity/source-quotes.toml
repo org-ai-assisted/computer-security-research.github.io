@@ -264,6 +264,36 @@ quotes = [
   { text = "GMS is only available through a license with Google and delivers a holistic set of popular apps and cloud-based services.", label = "Licensed from Google" },
 ]
 
+[nistSP800124r2]
+label = "NIST SP 800-124r2 -- install-source restriction + store vetting (independent of Google)"
+claims = [
+  { section = "Sec. 2", text = "An independent standards body treats the official-store restriction and the unknown-sources gate as recognized controls; sideloaded apps bypass store vetting." },
+]
+quotes = [
+  { text = "Some users may sideload applications onto their device by allowing installation from untrusted or unknown sources.", label = "Sideloading requires enabling unknown sources", note = "NIST SP 800-124r2 (independent corroboration, not a Google source); supports the control, not a detection rate." },
+]
+
+[hill2007antifeatures]
+label = "Anti-feature -- functionality a developer charges you to NOT have (Hill)"
+quotes = [
+  { text = "An antifeature, in the way I use the term, is functionality that a technology developer will charge users to not include.", label = "Definition", note = "Benjamin Mako Hill, FSF Bulletin, Fall 2007. A free-software-community concept, not a peer-reviewed scientific term." },
+]
+
+[fdroid-antifeatures]
+label = "F-Droid Anti-Features -- flags for owner-adverse behaviour"
+quotes = [
+  { text = "warning of possibly undesirable behaviour from the user's perspective, often serving the interest of the developer or a third party.", label = "Owner-adverse behaviour", note = "F-Droid Documentation, Anti-Features (community taxonomy)." },
+]
+
+[gamba2020preinstalled]
+label = "Gamba et al. -- preinstalled bloatware/adware/tracking the owner cannot remove"
+claims = [
+  { section = "Sec. 2", text = "Preinstalled Android software includes bloatware, adware, and tracking the owner often cannot uninstall without root." },
+]
+quotes = [
+  { text = "Even if users decide to stop or delete some of these apps, they will not be able to do so since many of them are core Android services and others cannot be permanently removed by the user without root privileges.", label = "Cannot remove without root", note = "Gamba et al., An Analysis of Pre-installed Android Software, IEEE Symposium on Security and Privacy 2020." },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
@@ -340,6 +370,7 @@ claims = [
 quotes = [
   { text = "\"its ability to maintain the integrity of the original data source being acquired and also that of the extracted data. The former is done by blocking or otherwise eliminating write requests to the device containing the data.\"" },
   { text = "An exact bit-stream copy of all electronic data on a device, performed in a manner that ensures the information is not altered.", label = "Image -- bit-for-bit, not altered", note = "NIST SP 800-101r1 glossary (the write-blocked image worked from in Sec 1)." },
+  { text = "A bit-for-bit reproduction of the information contained on an electronic device or associated media, whose validity and integrity has been verified using an accepted algorithm.", label = "Forensic Copy -- complete, integrity-verified (Sec 3 complete backup)", note = "NIST SP 800-101r1 glossary." },
   { text = "\"Level 4 Chip-Off methods involve the physical removal of memory from a mobile device to extract data, requiring extensive training in electronic engineering and file system forensics.\" / \"the risk of causing physical damage to the chip during the extraction process.\"", label = "chip-off" },
 ]
 
