@@ -180,7 +180,7 @@ claims = [
   { section = "Sec. 3, 13", text = "unlocking the bootloader triggers a mandatory wipe of user data." },
 ]
 quotes = [
-  { text = "\"After the user acknowledges the warning, the device should perform a factory data reset to prevent unauthorized data access.\" (page body loads via JS; retrieved with a headless chromium render, not raw fetch)" },
+  { text = "After the user acknowledges the warning, the device should perform a factory data reset to prevent unauthorized data access.", note = "Page body loads via JS; retrieved with a headless chromium render, not a raw fetch." },
 ]
 
 [rowlingson-forensic-readiness]
@@ -867,21 +867,19 @@ quotes = [
 
 # Remaining references: cited but no online exact text retrieved.
 [iso-27043]
-# Scope via a public national-adoption reproduction (iso.org Cloudflare-blocks automated fetch).
-quotes = [{ text = "This includes processes from pre-incident preparation through investigation closure, as well as any general advice and caveats on such processes.", label = "Scope" }]
+quotes = [{ text = "This includes processes from pre-incident preparation through investigation closure, as well as any general advice and caveats on such processes.", label = "Scope", note = "Scope text retrieved from a public national-adoption reproduction; iso.org Cloudflare-blocks automated fetch." }]
 
 [hoog-android-forensics]
-no_quote = "Hoog, Android Forensics (Syngress, 2011) -- print book; no online full text."
+no_quote = "Hoog, Android Forensics (Syngress, 2011) -- print book; the Internet Archive copy is lending-restricted (full-text OCR gated), so no verbatim text is retrievable without borrowing."
 
 [bickford-rootkits-smartphones]
 quotes = [{ text = "We use three example rootkits to show that smart phones are just as vulnerable to rootkits as desktop operating systems.", label = "Abstract" }]
 
 [google-play-help]
-quotes = [{ text = "You can add a Google Account on your device to start downloading and buying items on the Google Play Store app.", label = "Google Play Help" }]
+quotes = [{ text = "You can add a Google Account on your device to start downloading and buying items on the Google Play Store app.", label = "Google Play Help", note = "Page body loads via JS; retrieved with a headless chromium render, not a raw fetch." }]
 
 [sguigna-jtag-attack-surface]
-# Abstract via OpenAlex + Semantic Scholar mirrors (IEEE Xplore hard-blocks automated fetch).
-quotes = [{ text = "One method used to protect platforms against such attacks is to physically fuse off the JTAG Test Access Ports, either at the integrated circuit or the board level.", label = "Abstract" }]
+quotes = [{ text = "One method used to protect platforms against such attacks is to physically fuse off the JTAG Test Access Ports, either at the integrated circuit or the board level.", label = "Abstract", note = "Abstract retrieved from OpenAlex + Semantic Scholar mirrors; IEEE Xplore hard-blocks automated fetch." }]
 
 [breeuwsma-jtag-imaging]
 no_quote = "Breeuwsma, Digital Investigation 2006 -- Elsevier paywalled; no open abstract."
@@ -895,5 +893,5 @@ claims = [
   { section = "Sec. 12", text = "the cellular baseband runs vendor firmware on a separate, less-hardened processor and carries remotely exploitable memory corruptions, triggerable over the air." },
 ]
 quotes = [
-  { text = "\"the cellular baseband stack of most smartphones runs on a separate processor and is significantly less hardened, if at all.\" / \"In this paper we demonstrate the risk of remotely exploitable memory corruptions in cellular baseband stacks.\" / \"The vulnerabilities can be triggered over the air interface using a rogue GSM base station.\" (verified from the WOOT 2012 PDF: usenix.org/system/files/conference/woot12/woot12-final24.pdf)" },
+  { text = "\"the cellular baseband stack of most smartphones runs on a separate processor and is significantly less hardened, if at all.\" / \"In this paper we demonstrate the risk of remotely exploitable memory corruptions in cellular baseband stacks.\" / \"The vulnerabilities can be triggered over the air interface using a rogue GSM base station.\"", note = "Verified from the WOOT 2012 PDF: usenix.org/system/files/conference/woot12/woot12-final24.pdf" },
 ]
