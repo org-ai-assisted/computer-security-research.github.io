@@ -1488,6 +1488,9 @@ configuration still cannot independently audit that firmware layer,
 echoing in a new place the principle that a system cannot be trusted to
 report truthfully on its own state \citep{thompson-trusting-trust}.
 
+A third objection holds that verified boot and hardware key attestation
+already furnish the integrity assurance that owner-inspection is meant
+to provide, so the owner has no need to verify the device independently.
 Verified boot is itself a strong defense but not an absolute one, and
 the owner cannot independently confirm that it holds. Its guarantees
 rest on assumptions -\/- that the signing keys stay secret, and that the
@@ -1546,7 +1549,7 @@ on-screen key fingerprint the owner can themselves verify
 any owner is the boot ROM and the fused keys under that key, which none
 can replace or read out.
 
-A third objection is that consumer antivirus and mobile-security apps
+A fourth objection is that consumer antivirus and mobile-security apps
 -\/- products such as Kaspersky, Avast, and Norton, alongside
 Google\textquotesingle s built-in Play Protect -\/- already let an owner
 detect compromise. These are real and widely used: Play Protect is, in
