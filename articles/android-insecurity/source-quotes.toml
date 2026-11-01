@@ -200,6 +200,25 @@ quotes = [
   { text = "ALIEN is injected into the zygote address space to pivot into specialized privileged processes inside the Android permission model. Since zygote is the parent process of most of the Android processes, it can change to most UIDs and transition into other SELinux contexts that possess different privileges.", label = "zygote injection, SELinux transition", note = "Cisco Talos, technical analysis of Intellexa's PREDATOR (2023)." },
 ]
 
+[aosp-adb-root]
+label = "AOSP adb -- a stock user build never lets adbd stay root"
+claims = [
+  { section = "Sec. 3", text = "On a stock user build, adbd drops to the shell user and cannot run as root without modifying the device." },
+]
+quotes = [
+  { text = "adbd always starts running as user root. One of the first things the daemon does is to check if it should drop its privileges to run as shell user.", label = "adbd drops to shell", note = "Android platform adb developer doc (docs/dev/root.md); markdown backticks removed." },
+  { text = "On a user debug, these properties will never allow adbd to remain root. However, on eng and userdebug builds they will.", label = "user build: adbd never root", note = "Verbatim from the adb doc (its text reads \"user debug\"); eng/userdebug are the non-production variants." },
+]
+
+[luks-cryptsetup-faq]
+label = "LUKS -- one volume key wrapped by multiple user-key slots on disk"
+claims = [
+  { section = "Sec. 11", text = "LUKS stores one volume key wrapped by passphrase key-slots on disk, so a passphrase change re-wraps the key rather than re-encrypting the volume." },
+]
+quotes = [
+  { text = "LUKS (multiple user keys with one volume key, anti-forensic features, metadata block at start of device, ...)", label = "One volume key, multiple user keys", note = "cryptsetup project FAQ, on LUKS vs plain dm-crypt." },
+]
+
 [grapheneos-usage]
 label = "GrapheneOS -- stated position: will not spoof/bypass attestation checks"
 claims = [
