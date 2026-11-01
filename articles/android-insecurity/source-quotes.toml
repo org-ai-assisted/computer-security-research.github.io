@@ -546,7 +546,7 @@ quotes = [
 [amnesty-pegasus-methodology]
 label = "Amnesty International -- fewer forensic traces on Android than iOS"
 claims = [
-  { section = "Sec. 10", text = "significantly more forensic traces are accessible on iOS than stock Android, so the methodology focused on iOS; most confirmed Pegasus infections were iPhones." },
+  { section = "Sec. 12", text = "significantly more forensic traces are accessible on iOS than stock Android, so the methodology focused on iOS; most confirmed Pegasus infections were iPhones." },
 ]
 quotes = [
   { text = "\"In Amnesty International's experience there are significantly more forensic traces accessible to investigators on Apple iOS devices than on stock Android devices, therefore our methodology is focused on the former. As a result, most recent cases of confirmed Pegasus infections have involved iPhones.\"" },
@@ -556,7 +556,7 @@ quotes = [
 [mvt-android-methodology]
 label = "MVT -- limited Android diagnostic information"
 claims = [
-  { section = "Sec. 10", text = "Android stores little diagnostic information useful for triaging compromises and the toolkit's Android capabilities are correspondingly limited." },
+  { section = "Sec. 12", text = "Android stores little diagnostic information useful for triaging compromises and the toolkit's Android capabilities are correspondingly limited." },
 ]
 quotes = [
   { text = "\"The limited diagnostic information available makes it difficult to triage potential compromises\" / \"capabilities are limited as well. However, not all is lost.\"" },
@@ -583,7 +583,7 @@ quotes = [
 [chen-anti-virtualization]
 label = "Chen et al. -- malware checks for and thwarts analysis environments"
 claims = [
-  { section = "Sec. 10", text = "measurement studies show modern malware checks for virtualized or instrumented environments and withholds its behavior when it detects them." },
+  { section = "Sec. 1, 13", text = "measurement studies show modern malware checks for virtualized or instrumented environments and withholds its behavior when it detects them." },
 ]
 quotes = [
   { text = "\"Recently however, new malware instances have emerged with the capability to check and often thwart these defensive activities -- essentially leaving defenders blind to their activities.\"", label = "abstract" },
@@ -593,7 +593,7 @@ quotes = [
 [ruggia-evasive-malware]
 label = "Ruggia et al. -- evasive malware detects analysis environments"
 claims = [
-  { section = "Sec. 10", text = "modern malware checks whether it is under analysis and the evasion techniques have grown sophisticated." },
+  { section = "Sec. 1, 13", text = "modern malware checks whether it is under analysis and the evasion techniques have grown sophisticated." },
 ]
 quotes = [
   { text = "\"attackers pay special attention to flying under the radar of analysis tools, and the techniques to understand whether their app is under analysis have become more and more sophisticated.\"", label = "abstract" },
@@ -602,7 +602,7 @@ quotes = [
 [garfinkel-anti-forensics]
 label = "Garfinkel -- anti-forensics taxonomy (wiping, chaff, planting)"
 claims = [
-  { section = "Sec. 10, 13", text = "the anti-forensics literature names artifact wiping, trail obfuscation, and self-removal." },
+  { section = "Sec. 1, 13", text = "the anti-forensics literature names artifact wiping, trail obfuscation, and self-removal." },
 ]
 quotes = [
   { text = "\"Anti-Forensics (AF) tools and techniques frustrate CFTs by erasing or altering information; creating \\\"chaff\\\" that wastes time and hides information; implicating innocent parties by planting fake evidence; exploiting implementation bugs in known tools...\"" },
@@ -738,7 +738,7 @@ quotes = [
 [sudhakar-fileless-malware]
 label = "Fileless-malware survey -- no on-disk artifact"
 claims = [
-  { section = "Sec. 10", text = "non-persistent, memory-resident malware leaves no durable artifact and evades signature-based detection." },
+  { section = "Sec. 3", text = "non-persistent, memory-resident malware leaves no durable artifact and evades signature-based detection." },
 ]
 quotes = [
   { text = "\"Fileless malware does not use traditional executables to carry-out its activities. So, it does not use the file system, thereby evading signature-based detection system.\"" },
