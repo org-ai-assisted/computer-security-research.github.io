@@ -565,7 +565,7 @@ claims = [
   { section = "Sec. 12", text = "/e/OS ships microG pre-installed; it passes only the Basic integrity verdict, while Device and Strong require certified hardware -- corroborating the A13+ hardware-backed boundary." },
 ]
 quotes = [
-  { text = "\"/e/OS ships microG pre-installed and pre-configured\" / \"On /e/OS, microG can pass the Basic verdict; the Device and Strong verdicts require certified hardware and are out of reach.\" (source uses Unicode em dash / curly apostrophe; normalized to ASCII here)" },
+  { text = "\"/e/OS ships microG pre-installed and pre-configured\" / \"On /e/OS, microG can pass the Basic verdict; the Device and Strong verdicts require certified hardware and are out of reach.\"", note = "Source uses Unicode em dash / curly apostrophe; normalized to ASCII here." },
 ]
 
 [safetynet-fix]
