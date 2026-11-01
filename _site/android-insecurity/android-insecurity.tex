@@ -1454,21 +1454,33 @@ hardware continues to uncover undisclosed baseband command interfaces
 and vendor-confirmed zero-day flaws, including denial of cellular
 service and arbitrary access to the application
 processor\textquotesingle s file system from the baseband
-\citep{li-basemirror}. A discrete secure element, where present,
-likewise runs vendor firmware on its own chip. The trusted execution
-environment should not be conflated with these: on a platform such as
-this one it shares the application processor and is signed and checked
-by the bootloader, so it falls under verified boot rather than being an
-uninspected separate processor; its limitation for the owner is that its
-firmware, like the baseband\textquotesingle s, is not something the
-owner can independently image and audit, not that it runs unverified.
-The broader pattern is that persistent implants have migrated toward
-low-level firmware beneath the operating system, installable by ordinary
-malware once the system is compromised \citep{zaddach-hdd-backdoor}; the
-strongest owner-inspectable configuration still cannot independently
-audit that firmware layer, echoing in a new place the principle that a
-system cannot be trusted to report truthfully on its own state
-\citep{thompson-trusting-trust}.
+\citep{li-basemirror}. The Samsung finding was itself obtained by
+reverse-engineering the proprietary modem binary, a reminder that
+realizing inspectability in practice can draw on the
+modify-and-reverse-engineer freedoms held conceptually distinct from it
+in Section 3, and can carry legal exposure the owner or researcher must
+navigate: the finders rested the lawfulness of their decompilation on
+the interoperability exception in Article 6 of the EU Computer Programs
+Directive \citep{replicant-samsung-backdoor-wiki},
+\citep{eu-computer-programs-directive}, while in the United States
+comparable work depends on the periodic, narrowly drawn
+good-faith-security-research and device-repair exemptions to the
+DMCA\textquotesingle s anti-circumvention prohibition
+\citep{dmca-1201-exemptions-2024}. A discrete secure element, where
+present, likewise runs vendor firmware on its own chip. The trusted
+execution environment should not be conflated with these: on a platform
+such as this one it shares the application processor and is signed and
+checked by the bootloader, so it falls under verified boot rather than
+being an uninspected separate processor; its limitation for the owner is
+that its firmware, like the baseband\textquotesingle s, is not something
+the owner can independently image and audit, not that it runs
+unverified. The broader pattern is that persistent implants have
+migrated toward low-level firmware beneath the operating system,
+installable by ordinary malware once the system is compromised
+\citep{zaddach-hdd-backdoor}; the strongest owner-inspectable
+configuration still cannot independently audit that firmware layer,
+echoing in a new place the principle that a system cannot be trusted to
+report truthfully on its own state \citep{thompson-trusting-trust}.
 
 Verified boot is itself a strong defense but not an absolute one, and
 the owner cannot independently confirm that it holds. Its guarantees
