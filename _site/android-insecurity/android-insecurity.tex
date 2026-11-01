@@ -1555,14 +1555,21 @@ Google\textquotesingle s built-in Play Protect -\/- already let an owner
 detect compromise. These are real and widely used: Play Protect is, in
 Google\textquotesingle s description, "the most widely deployed mobile
 threat protection service in the world" and "scans 200 billion Android
-apps daily" \citep{google-play-protect}. But they operate as ordinary
-applications inside the very system they are meant to vet. They match
-applications and files against known-malware signatures and heuristics
-within the storage the operating system permits them to see -\/-
-Kaspersky\textquotesingle s full scan, for instance, covers "the
-device\textquotesingle s entire file system" \citep{kaspersky-android}
--\/- which catches known, application-level threats but presupposes an
-operating system that is reporting truthfully about itself.
+apps daily" \citep{google-play-protect}. But all of them, however
+privileged, run inside the very system they are meant to vet. The
+third-party products operate as ordinary applications, while Play
+Protect is more privileged still -\/- a component of Google Mobile
+Services that reaches across the device to disable or remove other apps
+on the owner\textquotesingle s behalf
+\citep{google-play-protect-remove}, \citep{google-gms} -\/- yet it too
+executes within the running operating system rather than from any
+external, trusted vantage. They match applications and files against
+known-malware signatures and heuristics within the storage the operating
+system permits them to see -\/- Kaspersky\textquotesingle s full scan,
+for instance, covers "the device\textquotesingle s entire file system"
+\citep{kaspersky-android} -\/- which catches known, application-level
+threats but presupposes an operating system that is reporting truthfully
+about itself.
 
 The vendors say as much. Avast states the limit plainly: "Like all
 applications on the Android market, it is subject to limitations imposed
@@ -1591,7 +1598,7 @@ simultaneously removes a means by which an owner might inspect the
 device from a trusted vantage point. The circular trust dependency of
 Section 8 is the sharpest expression of the tension: the configurations
 an owner would need in order to verify the device are exactly those the
-platform declines to trust.
+platform refuses to attest as trusted.
 
 The owner is consequently placed in a position analogous to that of an
 attacker with respect to introspection -\/- indeed a worse one: these
