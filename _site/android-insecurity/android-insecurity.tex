@@ -284,20 +284,46 @@ standpoint and notes the platform\textquotesingle s view where relevant.
 
 Although this paper documents Android in detail as its worked example
 -\/- it is the most openly specified of the mainstream vendor-locked
-platforms, its system software released as the open-source Android Open
-Source Project \citep{aosp-open-source} -\/- the owner-inspectability
-criterion and the limits it exposes are not Android-specific. They
-follow from vendor-lock itself: a locked boot chain, administrative
-capability withheld from the owner, and attestation that ties the
-device\textquotesingle s standing with apps and services to a
-vendor-approved state. By the same logic they apply, to varying degrees,
-to other vendor-locked devices, Apple iOS among them; the mechanisms
-differ in detail, but the owner\textquotesingle s structural position
-does not. This paper references such platforms only where a cited source
-speaks to them and does not document them to the same depth.
+platforms, the core of its system software released as the open-source
+Android Open Source Project (AOSP) \citep{aosp-open-source} -\/- that
+openness is a property of the source, not of the device as sold. AOSP is
+a codebase, not a complete operating system for real hardware: running
+it on a phone requires device-specific proprietary binaries the vendor
+distributes separately -\/- drivers, radio and baseband firmware, and
+hardware-abstraction blobs under non-open licenses
+\citep{google-driver-binaries}, \citep{aosp-hal} -\/- and the mainstream
+"Google Android" product adds Google Mobile Services, a proprietary
+suite that is not part of AOSP and available only under license from
+Google \citep{google-gms}. The device as sold is therefore vendor-locked
+despite the open-source codebase beneath it, bundling proprietary
+components the owner cannot rebuild and shipping with the bootloader
+locked \citep{aosp-bootloader-locking} (Sections 8 and 12). The
+owner-inspectability criterion and the limits it exposes are not
+Android-specific. They follow from vendor-lock itself: a locked boot
+chain, administrative capability withheld from the owner, and
+attestation that ties the device\textquotesingle s standing with apps
+and services to a vendor-approved state. By the same logic they apply,
+to varying degrees, to other vendor-locked devices, Apple iOS among
+them; the mechanisms differ in detail, but the owner\textquotesingle s
+structural position does not. This paper references such platforms only
+where a cited source speaks to them and does not document them to the
+same depth.
 
-Terminology is used consistently throughout. Stock Android denotes a
-typical device as sold, with a locked bootloader
+Terminology is used consistently throughout. A device is vendor-locked,
+in the sense used here, when as sold it runs only vendor-signed system
+images under signing keys the vendor holds and the owner does not, with
+the bootloader locked -\/- so that the owner\textquotesingle s only
+route to inspecting or replacing that software is to unlock the device,
+which, where the vendor permits it at all, triggers a mandatory wipe of
+user data \citep{aosp-bootloader-locking} and forfeits the verified-boot
+and hardware-backed attestation standing the device reports to software
+\citep{aosp-verified-boot} (Sections 8 and 12). The term names a
+structural position -\/- locked and vendor-keyed by default, the only
+exit being destructive and self-defeating for inspection -\/- not the
+narrower claim that unlocking is impossible: a Google Pixel permits
+unlocking yet is vendor-locked in this sense, while Apple iOS, which
+offers owners no unlock at all, is the limiting case. Stock Android
+denotes a typical device as sold, with a locked bootloader
 \citep{aosp-bootloader-locking} and without root access
 \citep{vidas-android-collection}.
 
